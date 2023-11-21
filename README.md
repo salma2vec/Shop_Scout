@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/IdealisticINTJ/ShopScout">		  
-    <img src="https://github.com/IdealisticINTJ/ShopScout/assets/logos/png/logo-no-background.png" alt="Logo" width="160">
+    <img src="https://github.com/IdealisticINTJ/ShopScout/assets/65449934/d752e2cf-b1b0-4252-a10c-c867e674b288" alt="Logo" width="130">
   </a>
 </p>
 
