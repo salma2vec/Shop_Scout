@@ -9,8 +9,8 @@
 -->
 
 <p align="center">
-  <a href="https://github.com/IdealisticINTJ/shopscout">		  
-    <img src="https://github.com/IdealisticINTJ/shop-scout/assets/logos/png/logo-no-background.png" alt="Logo" width="160">
+  <a href="https://github.com/IdealisticINTJ/ShopScout">		  
+    <img src="https://github.com/IdealisticINTJ/ShopScout/assets/logos/png/logo-no-background.png" alt="Logo" width="160">
   </a>
 </p>
 
@@ -25,9 +25,9 @@
     <br />
     <a href="your-vide-demo-link">View Video Demo</a>
     ·
-    <a href="https://sourceforge.net/projects/shopscout/">Check backend API docs</a>
+    <a href="https://sourceforge.net/projects/ShopScout/">Check backend API docs</a>
     ·
-    <a href="https://github.com/IdealisticINTJ/shop-scout/issues">Request Feature</a>
+    <a href="https://github.com/IdealisticINTJ/ShopScout/issues">Request Feature</a>
 </p>
 
 # Table of Contents
@@ -80,7 +80,7 @@ shopscout/
 └── .env.example           # Example environment variables (to be copied to .env)
 ```
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/shop-scout)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
 
 ## Backend (API)
 
@@ -97,7 +97,7 @@ _Follow the below instructions to clone the ShopScout repo and start the backend
 
 1. ```bash
    # Clone the repo
-   git clone https://github.com/IdealisticINTJ/shop-scout.git
+   git clone https://github.com/IdealisticINTJ/ShopScout.git
 
 2. ```bash
    # Create a new .env file in the root directory 
@@ -150,7 +150,7 @@ Make sure you have NodeJS installed on your machine. If needed, adjust the port 
 - [x] Consider data minimization by saving only the previous data and updating when necessary.
 - [x] Notification via Whatsapp
 - [ ] Best Deals Section
-- [ ] A NPM Package ([shop-scout](https://npm.io/package/shop-scout))
+- [ ] A NPM Package ([ShopScout](https://npm.io/package/ShopScout))
 - [ ] Discord Bot
 - [ ] Telegram Bot
 
