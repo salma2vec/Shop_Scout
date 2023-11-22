@@ -1,15 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { Product } from './models/searchResults.js';
+import dotenv from 'dotenv';
+import { Product } from '../models/searchResult.js';
+import { findProductsOnAmazon, findProductsOnFlipkart, findProductsOnAlibaba, findProductsOnSnapdeal } from '../utils/index.js';
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
+console.log(process.env.MONGODB_URI);
+
 // Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://salmasaa02:<password>@cluster0.88x3d74.mongodb.net/shopscout?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGODB_URI, {});
 
 // Define your routes here
 
@@ -58,6 +61,7 @@ app.get('/products', async (req, res) => {
           ...product,
           website: websites[i],
           search_term,
+          reviews: product.reviews || 0, // Add this line to set reviews to 0 if it's undefined or null
         }));
 
         db_promises.push(Product.insertMany(productsWithWebsite));

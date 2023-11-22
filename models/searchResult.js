@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
   reviews: Number,
   rating: String,
   search_term: { type: String, index: true }, // Adding an index on the search_term field
+  website: String, // Adding the website field
 });
 
 const Product = mongoose.model('Product', productSchema);
