@@ -45,7 +45,7 @@
 
 Effortlessly compare prices, review counts, ratings, and more from a variety of websites, providing you with comprehensive insights. Tailor your search experience with customizable parameters, including search terms, filters for highest/lowest price or review rating, and the ability to specify the number of top results. Benefit from multi-website support, allowing you to fetch and compare data from a minimum of five distinct comparison websites. 
 
-[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Nykaaa**.
+[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Nykaa**.
 
 The responsive web interface ensures a user-friendly experience, while backend caching optimizes performance by storing spot price comparisons for efficient retrieval during repeat searches. 
 ShopScout is your go-to tool for making informed purchasing decisions with ease.
