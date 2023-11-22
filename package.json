@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "server.js", 
   "scripts": {
+    "start": "node server/server.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Salma",
   "license": "ISC",
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
