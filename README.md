@@ -32,7 +32,6 @@
 
 # Table of Contents
 - [Features](#features)
-- [Project Structure](#project-structure)
 - [Backend (API)](#backend-api)
   - [Tech Stack](#tech-stack)
 - [Installation](#installation)
@@ -46,43 +45,13 @@
 
 Effortlessly compare prices, review counts, ratings, and more from a variety of websites, providing you with comprehensive insights. Tailor your search experience with customizable parameters, including search terms, filters for highest/lowest price or review rating, and the ability to specify the number of top results. Benefit from multi-website support, allowing you to fetch and compare data from a minimum of five distinct comparison websites. 
 
-[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Myntra**.
+[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Nykaaa**.
 
 The responsive web interface ensures a user-friendly experience, while backend caching optimizes performance by storing spot price comparisons for efficient retrieval during repeat searches. 
 ShopScout is your go-to tool for making informed purchasing decisions with ease.
 
-## Project Structure
-```bash
-shopscout/
-│
-├── api/                   # Backend/API related files
-│   ├── controllers/       # Controller logic
-│   ├── models/            # Data models
-│   ├── routes/            # API routes
-│   ├── services/          # Business logic or services
-│   ├── utils/             # Utility functions
-│   ├── .env               # Environment variables
-│   ├── package.json       # Backend dependencies and scripts
-│   └── server.js          # Express server configuration
-│
-├── web/                   # Frontend/Web Interface related files
-│   ├── components/        # Reusable components
-│   ├── pages/             # Next.js pages
-│   ├── public/            # Public assets (images, etc.)
-│   ├── styles/            # CSS styles
-│   ├── .env.local         # Environment variables for the frontend
-│   ├── package.json       # Frontend dependencies and scripts
-│   └── next.config.js     # Next.js configuration
-│
-├── .gitignore             # Git ignore file
-├── README.md              # Project documentation
-├── package.json           # Main project configuration
-└── .env.example           # Example environment variables (to be copied to .env)
-```
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
-
 ## Backend (API)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
 
 ### Tech Stack
 
