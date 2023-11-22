@@ -1,5 +1,3 @@
-// server.js
-
 import express from 'express';
 import mongoose from 'mongoose';
 import { Product } from './models/searchResults.js';
@@ -39,7 +37,7 @@ app.get('/products', async (req, res) => {
 
     if (existingProducts.length > 0) {
       // If there are existing products, return them
-      res.send(existingProducts);
+      res.send({ products: existingProducts });
       return;
     } else {
       // If no existing products, perform scraping and store in the database
@@ -50,10 +48,10 @@ app.get('/products', async (req, res) => {
         findProductsOnAlibaba(search_term),
       ]);
 
-      // Assume the result of scraping is stored in the variable 'products'
       // Insert the scraped products into the database with website information
       const websites = ["amazon", "flipkart", "snapdeal", "alibaba"];
-      const dbPromises = [];
+
+      const db_promises = [];
 
       for (let i = 0; i < products.length; i++) {
         const productsWithWebsite = products[i].map(product => ({
@@ -62,15 +60,15 @@ app.get('/products', async (req, res) => {
           search_term,
         }));
 
-        dbPromises.push(Product.insertMany(productsWithWebsite));
+        db_promises.push(Product.insertMany(productsWithWebsite));
       }
 
-      await Promise.all(dbPromises);
+      const insertedProducts = await Promise.all(db_promises);
 
       // Combine the results from different websites into a single array
-      const allProducts = [].concat(...products);
+      const allProducts = insertedProducts.flat();
 
-      res.send(allProducts);
+      res.send({ products: allProducts });
     }
   } catch (error) {
     console.error('Error:', error);
