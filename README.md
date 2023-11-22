@@ -51,10 +51,10 @@ ShopScout is your go-to tool for making informed purchasing decisions with ease.
 
 ### Tech Stack
 
-- Backend: Node.js, Express.js, MongoDB, Mongoose, Fetch, Cheerio.
-- Frontend: React, HTML, CSS.
-- Deployment: Railway, Vercel.
-- Infrastructure as Code: Terraform.
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose, Fetch, Cheerio.
+- **Frontend**: React, HTML, CSS.
+- **Deployment**: Railway, Vercel.
+- **Infrastructure as Code**: Terraform.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
 
