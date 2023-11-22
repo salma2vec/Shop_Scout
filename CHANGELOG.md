@@ -12,13 +12,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Enabled customizable search parameters, including search terms, filters, and the number of top results.
 - Created API documentation for developers, providing insights into endpoints, request parameters, and response structures.
 - Implemented modular scraping modules, each dedicated to a specific e-commerce website, enhancing maintainability and scalability.
-- Integrated a proxy management system to mitigate IP blocking and rate-limiting risks during web scraping.
-- Utilized Puppeteer as the primary web scraping tool, offering headless browser capabilities, advanced interaction, asynchronous operations, CAPTCHA handling, and effective debugging capabilities.
-- Employed MongoDB for data storage, leveraging its flexible schema to accommodate diverse data structures across different e-commerce websites.
-
+  
 ### Changed
 - Transitioned from manual scraping implementation to Puppeteer for enhanced efficiency and maintainability.
-
+- Implemented storing products with corresponding website information.
+- Updated the server response to include website details for each product.
+- 
 ### Fixed
 - Resolved issues related to selector parsing, broken CSS selector attributes, and compatibility with Node.js runtime.
 
