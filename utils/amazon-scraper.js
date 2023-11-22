@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import fetch from "node-fetch";
 
-const findProducts = async (search_term) => {
+export const findProductsOnAmazon = async (search_term) => {
   // add some headers to make this seem legit
   const response = await fetch(
     `https://www.amazon.in/s?k=${search_term}&ref=nb_sb_noss_2`,
@@ -45,5 +45,3 @@ const findProducts = async (search_term) => {
 
   return products;
 };
-
-findProducts("headphones").then((products) => console.log(products));

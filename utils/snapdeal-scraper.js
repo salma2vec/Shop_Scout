@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
-const findProducts = async (search_term) => {
+export const findProductsOnSnapdeal = async (search_term) => {
   const response = await fetch(
     `https://www.snapdeal.com/search?keyword=${search_term}&sort=rlvncy`,
     {
@@ -54,5 +54,3 @@ const findProducts = async (search_term) => {
 
   return products;
 };
-
-findProducts("shoes").then((products) => console.log(products));

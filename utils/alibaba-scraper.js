@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
-const findProducts = async (search_term) => {
+export const findProductsOnAlibaba = async (search_term) => {
   const response = await fetch(
     `https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&country=IN&param_order=CNTRY-IN&fsb=y&IndexArea=product_en&CatId=&SearchText=${search_term}`,
     {
@@ -39,5 +39,3 @@ const findProducts = async (search_term) => {
 
   return products;
 };
-
-findProducts("shoes").then((products) => console.log(products));
