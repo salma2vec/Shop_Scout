@@ -34,7 +34,7 @@
 - [Features](#features)
 - [Backend (API)](#backend-api)
   - [Tech Stack](#tech-stack)
-- [Installation](#installation)
+- [Installation](#installation-guide)
 - [Future Scope](#future-scope)
 - [Utilities](#utilities)
 - [Contributing](#contributing)
@@ -45,7 +45,7 @@
 
 Effortlessly compare prices, review counts, ratings, and more from a variety of websites, providing you with comprehensive insights. Tailor your search experience with customizable parameters, including search terms, filters for highest/lowest price or review rating, and the ability to specify the number of top results. Benefit from multi-website support, allowing you to fetch and compare data from a minimum of five distinct comparison websites. 
 
-[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Nykaaa**.
+[Currently supported e-commerce platforms](): **Amazon, Flipkart, AliBaba, Snapdeal, Nykaa**.
 
 The responsive web interface ensures a user-friendly experience, while backend caching optimizes performance by storing spot price comparisons for efficient retrieval during repeat searches. 
 ShopScout is your go-to tool for making informed purchasing decisions with ease.
@@ -60,41 +60,43 @@ ShopScout is your go-to tool for making informed purchasing decisions with ease.
 - Fetch for web scraping
 - Cheerio for HTML parsing
 
-# Installation
+# Installation Guide
 
-_Follow the below instructions to clone the ShopScout repo and start the backend and frontend server._
+## Prerequisites
+1. [Node.js](https://nodejs.org/) installed (version 14 or higher)
+2. [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/) package manager installed
+3. [MongoDB](https://www.mongodb.com/) installed and running
 
-1. ```bash
-   # Clone the repo
+## Setup
+1. Clone the ShopScout repository:
+
+   ```bash
    git clone https://github.com/IdealisticINTJ/ShopScout.git
+   cd ShopScout
 
-2. ```bash
-   # Create a new .env file in the root directory 
-   PORT=3001
-   # Add any other necessary environment variables
-
-3. ```bash
-   # Navigate to the `api` directory and install NPM packages for the backend
-   cd api
+2. Install Backend Dependencies:
+   ```bash
+   cd server
    npm install
 
-4. ```bash
-   # Start the backend server
-   npm start
-
-5. ```bash
-   # Open a new terminal and go to the `web` directory
-   cd ../web
-
-6. ```bash
-   # Install NPM packages for the frontend
+4. Install Frontend Dependencies:
+   ```bash
+   cd ../client
    npm install
 
-7. ```bash
-   # Run the frontend application
+5. Start the Backend Server:
+   ```bash
+   cd ../server
    npm start
 
-Both the backend and frontend servers are up and running. You can view the ShopScout web interface at `http://localhost:3000` and access the API at `http://localhost:3001/api/compare`.
+6. In a new terminal, start the Frontend server:
+   ```bash
+   cd ../client
+   npm start
+
+7. Open your browser and navigate to [http://localhost:3000]().
+
+8. ShopScout should now be running. Explore the product comparison features!
 
 <details>
 <summary>Additional Notes
