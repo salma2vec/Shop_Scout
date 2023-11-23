@@ -21,7 +21,7 @@
     <br/>
     <a href="https://docs.google.com/document/d/17jfGy-oLZas7haOnenJluC_ct5VxzirVCmd4PKs1Opo/edit?usp=sharing"><strong>Explore the design specification »</strong></a>
     <br />
-    <a href="your-deployed-website-link"><strong>View deployed website »</strong></a>
+    <a href="https://shop-scout-ctbl-k0hk5hjf8-salma-shaiks-projects.vercel.app/"><strong>View deployed website »</strong></a>
     <br />
     <a href="your-vide-demo-link">View Video Demo</a>
     ·
