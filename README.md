@@ -37,7 +37,7 @@
 - [Future Scope](#future-scope)
 - [Utilities](#utilities)
 - [Contributing](#contributing)
-- [Support and Contact](#support-and-contact)
+- [Support](#support-and-contact)
 - [License](#license)
 
 ## Features
