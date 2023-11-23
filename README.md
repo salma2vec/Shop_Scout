@@ -32,8 +32,7 @@
 
 # Table of Contents
 - [Features](#features)
-- [Backend (API)](#backend-api)
-  - [Tech Stack](#tech-stack)
+- [Tech Stack](#tech-stack)
 - [Installation](#installation-guide)
 - [Future Scope](#future-scope)
 - [Utilities](#utilities)
@@ -50,15 +49,14 @@ Effortlessly compare prices, review counts, ratings, and more from a variety of 
 The responsive web interface ensures a user-friendly experience, while backend caching optimizes performance by storing spot price comparisons for efficient retrieval during repeat searches. 
 ShopScout is your go-to tool for making informed purchasing decisions with ease.
 
-## Backend (API)
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
-
 ### Tech Stack
 
-- Node.js
-- Express.js
-- Fetch for web scraping
-- Cheerio for HTML parsing
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose, Fetch, Cheerio.
+- **Frontend**: React, HTML, CSS.
+- **Deployment**: Railway, Vercel.
+- **Infrastructure as Code**: Terraform.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IdealisticINTJ/ShopScout)
 
 # Installation Guide
 
