@@ -157,7 +157,6 @@ For any questions, suggestions, or issues, please contact:
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 
-Enjoy comparing prices with ShopScout! 🛍️
 ---------
 
 ```javascript
@@ -169,7 +168,3 @@ if (youEnjoyed) {
 ```
 
 -----------
-
-
-[![forthebadge](https://forthebadge.com/images/badges/built-with-swag.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)
-
