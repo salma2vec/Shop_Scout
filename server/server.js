@@ -7,7 +7,7 @@ import { findProductsOnAmazon, findProductsOnFlipkart, findProductsOnAlibaba, fi
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 console.log('MongoDB URI:', process.env.MONGODB_URI);
 
