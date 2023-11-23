@@ -12,7 +12,7 @@ const port = 3000;
 console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 // Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, {});
 
 // Define your routes here
 
