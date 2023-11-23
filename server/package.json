@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js",
+    "start": "node server.js --omit=dev",
     "start-client": "babel-node client/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
