@@ -1,85 +1,101 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { Product } from '../models/searchResult.js';
-import { findProductsOnAmazon, findProductsOnFlipkart, findProductsOnAlibaba, findProductsOnSnapdeal } from '../scrapers/index.js';
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { Product } from "./models/searchResult.js";
+import {
+	findProductsOnAmazon,
+	findProductsOnFlipkart,
+	findProductsOnAlibaba,
+	findProductsOnSnapdeal,
+} from "./scrapers/index.js";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
-const port = 5000;
+const port = 3001;
 
-console.log('MongoDB URI:', process.env.MONGODB_URI);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(
+	morgan(":method :url :status :res[content-length] - :response-time ms")
+);
+const corsOptions = {
+    origin: "*",
+    methods: ['GET','POST']
+};
+app.use(cors(corsOptions));
 
-// Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Define your routes here
-
-app.get('/', (req, res) => {
-  res.send('Hello, World! MongoDB connected successfully!');
+mongoose.connect(process.env.MONGODB_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
 });
 
-// Implementing lean() option for Mongoose queries
-app.get('/products', async (req, res) => {
-  const search_term = req.query.search_term;
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+app.get("/", (req, res) => {
+	res.send("Hello, World! MongoDB connected successfully!");
+});
 
-  if (!search_term) {
-    res.status(400).send('Please provide a search term');
-    return;
-  }
+app.post("/products", async (req, res) => {
+	const { search_term, filter, topN, comparisonWebsites } = req.body;
+	const page = parseInt(req.query.page) || 1;
+	const limit = parseInt(req.query.limit) || 10;
 
-  try {
-    // Search for existing products in the database based on the search term with pagination
-    const existingProducts = await Product.find({ search_term })
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .lean();
+	if (!search_term) {
+		res.status(400).send("Please provide a search term");
+		return;
+	}
 
-    if (existingProducts.length > 0) {
-      // If there are existing products, return them
-      res.send({ products: existingProducts });
-      return;
-    } else {
-      // If no existing products, perform scraping and store in the database
-      const products = await Promise.all([
-        findProductsOnAmazon(search_term),
-        findProductsOnFlipkart(search_term),
-        findProductsOnSnapdeal(search_term),
-        findProductsOnAlibaba(search_term),
-      ]);
+	try {
+		// Search for existing products in the database based on the search term with pagination
+		const existingProducts = await Product.find({ search_term })
+			.skip((page - 1) * limit)
+			.limit(limit)
+			.lean();
 
-      // Insert the scraped products into the database with website information
-      const websites = ["amazon", "flipkart", "snapdeal", "alibaba"];
+		if (existingProducts.length > 0) {
+			// If there are existing products, return them
+			res.send({ products: existingProducts });
+			return;
+		} else {
+			// If no existing products, perform scraping and store in the database
+			const products = await Promise.all([
+				findProductsOnAmazon(search_term),
+				findProductsOnFlipkart(search_term),
+				findProductsOnSnapdeal(search_term),
+				findProductsOnAlibaba(search_term),
+			]);
 
-      const db_promises = [];
+			// Insert the scraped products into the database with website information
+			const websites = ["amazon", "flipkart", "snapdeal", "alibaba"];
 
-      for (let i = 0; i < products.length; i++) {
-        const productsWithWebsite = products[i].map(product => ({
-          ...product,
-          website: websites[i],
-          search_term,
-          reviews: product.reviews || 0, // Add this line to set reviews to 0 if it's undefined or null
-        }));
+			const db_promises = [];
 
-        db_promises.push(Product.insertMany(productsWithWebsite));
-      }
+			for (let i = 0; i < products.length; i++) {
+				const productsWithWebsite = products[i].map((product) => ({
+					...product,
+					website: websites[i],
+					search_term,
+					reviews: product.reviews || 0, // Add this line to set reviews to 0 if it's undefined or null
+				}));
 
-      const insertedProducts = await Promise.all(db_promises);
+				db_promises.push(Product.insertMany(productsWithWebsite));
+			}
 
-      // Combine the results from different websites into a single array
-      const allProducts = insertedProducts.flat();
+			const insertedProducts = await Promise.all(db_promises);
 
-      res.send({ products: allProducts });
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('Internal Server Error');
-  }
+			// Combine the results from different websites into a single array
+			const allProducts = insertedProducts.flat();
+
+			res.send({ products: allProducts });
+		}
+	} catch (error) {
+		console.error("Error:", error);
+		res.status(500).send("Internal Server Error");
+	}
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+	console.log(`Server is running on port ${port}`);
 });
