@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { Product } from '../models/searchResult.js';
-import { findProductsOnAmazon, findProductsOnFlipkart, findProductsOnAlibaba, findProductsOnSnapdeal } from '../utils/index.js';
+import { findProductsOnAmazon, findProductsOnFlipkart, findProductsOnAlibaba, findProductsOnSnapdeal } from '../scrapers/index.js';
 
 dotenv.config();
 
