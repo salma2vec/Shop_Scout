@@ -15,7 +15,7 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = 80;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -28,10 +28,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-mongoose.connect(process.env.MONGODB_URI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGODB_URI);
 
 app.get("/", (req, res) => {
 	res.send("Hello, World! MongoDB connected successfully!");
