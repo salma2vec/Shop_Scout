@@ -15,7 +15,7 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const port = 5000;
+const port = 3001;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
