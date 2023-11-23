@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './styles.css';
+import './styles/styles.css';
+import ComparisonForm from './components/ComparisonForm';
+import ProductResults from './components/ProductResults';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -9,3 +11,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+

@@ -1,4 +1,3 @@
-// client/src/components/ComparisonForm.js
 import React, { useState } from 'react';
 
 const ComparisonForm = ({ onCompare }) => {
