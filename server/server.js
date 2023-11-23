@@ -9,10 +9,10 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-console.log(process.env.MONGODB_URI);
+console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 // Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI, {});
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Define your routes here
 
