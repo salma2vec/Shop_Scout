@@ -5,6 +5,8 @@ import axios from "axios";
 
 const App = () => {
 	const [results, setResults] = useState([]);
+	const [hasSearch, setHasSearch] = useState(false);
+	const [isSearching, setIsSearching] = useState(false);
 
 	const handleSearch = async ({
 		search_term,
@@ -12,6 +14,7 @@ const App = () => {
 		topN,
 		comparisonWebsites,
 	}) => {
+		setIsSearching(true);
 		try {
 			const response = await axios({
 				method: "POST",
@@ -21,15 +24,18 @@ const App = () => {
 			const data = response.data;
 			console.log(data);
 			setResults(data.products);
+			setHasSearch(!!data.products ? true : false)
 		} catch (error) {
 			console.error("Error fetching data:", error);
+		} finally {
+			setIsSearching(false);
 		}
 	};
 
 	return (
 		<div>
 			<ComparisonForm onCompare={handleSearch} />
-			<ProductResults products={results} />
+			<ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
 		</div>
 	);
 };
