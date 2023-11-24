@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/IdealisticINTJ/Shop_Scout">		  
-    <img src="https://github.com/IdealisticINTJ/Shop_Scout/assets/65449934/d752e2cf-b1b0-4252-a10c-c867e674b288" alt="Logo" width="130">
+    <img src="https://github.com/IdealisticINTJ/Shop_Scout/assets/65449934/51c4459a-9eef-4d93-a742-f9cfda262761" alt="Logo" width="130">
   </a>
 </p>
 
@@ -23,11 +23,11 @@
     <br />
     <a href="https://shop-scout-ctbl-k0hk5hjf8-salma-shaiks-projects.vercel.app/"><strong>View deployed website »</strong></a>
     <br />
-    <a href="your-vide-demo-link">View Video Demo</a>
+    <a href="your-video-demo-link">View Video Demo</a>
     ·
     <a href="https://sourceforge.net/projects/ShopScout/">Check backend API docs</a>
     ·
-    <a href="https://github.com/IdealisticINTJ/ShopScout/issues">Request Feature</a>
+    <a href="https://github.com/IdealisticINTJ/Shop_Scout/issues">Request Feature</a>
 </p>
 
 # Table of Contents
@@ -69,7 +69,7 @@ ShopScout is your go-to tool for making informed purchasing decisions with ease.
 1. Clone the ShopScout repository:
 
    ```bash
-   git clone https://github.com/IdealisticINTJ/ShopScout.git
+   git clone https://github.com/IdealisticINTJ/Shop_Scout.git
    cd ShopScout
 
 2. Install Backend Dependencies:
@@ -119,7 +119,7 @@ Make sure you have NodeJS installed on your machine. If needed, adjust the port 
 - [x] Consider data minimization by saving only the previous data and updating when necessary.
 - [x] Notification via Whatsapp
 - [ ] Best Deals Section
-- [ ] A NPM Package ([ShopScout](https://npm.io/package/ShopScout))
+- [ ] A NPM Package ([ShopScout](https://npm.io/package/Shop_Scout))
 - [ ] Discord Bot
 - [ ] Telegram Bot
 
