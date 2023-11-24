@@ -30,6 +30,8 @@
     <a href="https://github.com/IdealisticINTJ/Shop_Scout/issues">Request Feature</a>
 </p>
 
+<p align="center"> WIP (Work in Progress): Web Interface </p>
+
 # Table of Contents
 - [Features](#features)
 - [Tech Stack](#tech-stack)
