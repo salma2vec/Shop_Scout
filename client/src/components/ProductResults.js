@@ -1,6 +1,7 @@
 import React from "react";
 import notFoundIcon from "../assets/icons/svg/not-found.svg"
 import loadingIcon from "../assets/icons/svg/loading.svg"
+import ProductCard from "./ProductCard";
 const ProductResults = ({ products, showResults, isSearching }) => {
 	return (
 		<div style={styles.container}>
@@ -18,9 +19,8 @@ const ProductResults = ({ products, showResults, isSearching }) => {
 					<ul style={styles.list}>
 						{
 							products.map((product, index) => (
-								<li key={index} style={styles.listItem}>
-									<strong>{product.title}</strong> - $
-									{product.price.toFixed(2)} - {product.website}
+								<li index={index}>
+									<ProductCard product={product} />
 								</li>
 							))
 						}
