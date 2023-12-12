@@ -58,7 +58,7 @@ ShopScout is your go-to tool for making informed purchasing decisions with ease.
 ## Tech Stack
 
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose, Fetch, Cheerio.
-- **Frontend**: React, HTML, CSS.
+- **Frontend**: React, TypeScript, HTML, CSS (Tailwind CSS).
 - **Deployment**: Railway, Vercel.
 - **Infrastructure as Code**: Terraform.
 
