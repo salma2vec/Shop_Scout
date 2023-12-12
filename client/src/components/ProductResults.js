@@ -34,7 +34,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
 				</div>
 				:
 				<div style={styles.helperContainer}>
-					<p style={{fontWeight: "bold"}}>To start, type the keywords in the search bar and press "Compare"!</p>
+					<p style={{fontWeight: "bold"}}>Begin your product search by entering relevant keywords into the search bar and clicking the "Compare" button.</p>
 				</div>
 			}
 		</div>

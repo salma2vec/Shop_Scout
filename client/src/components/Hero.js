@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Hero() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  
+
   return (
     <div className="w-full h-screen flex items-center justify-center p-10 md:p-20">
       <div className="w-full ">
