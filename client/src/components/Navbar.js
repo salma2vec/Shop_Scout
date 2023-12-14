@@ -1,8 +1,8 @@
-// Navbar.js
 import React from "react";
 import LogoImg from "../assets/logo-no-background.png";
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
-function Navbar({ toggleDarkMode }) {
+const Navbar = ({ toggleDarkMode }) => {
   return (
     <div className="flex items-center justify-center px-20 py-5">
       <div className="flex items-center justify-between w-full">
@@ -16,13 +16,16 @@ function Navbar({ toggleDarkMode }) {
           <a href="/signup" className="text-white hover:text-gray-600 bg-lightGreen rounded-full px-4 py-1">
             Sign Up
           </a>
-          <button onClick={toggleDarkMode} className="text-white bg-blue-500 rounded-full px-4 py-1">
-            Toggle Dark Mode
-          </button>
+          <DarkModeSwitch
+            checked={false} // Set to the current dark mode status
+            onChange={toggleDarkMode}
+            size={30}
+            animationProperties={defaultProperties}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

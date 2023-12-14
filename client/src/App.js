@@ -1,9 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ComparisonForm from './components/ComparisonForm';
 import ProductResults from './components/ProductResults';
 import axios from 'axios';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
+
+const defaultProperties = {
+  dark: {
+    circle: {
+      r: 9,
+    },
+    mask: {
+      cx: '50%',
+      cy: '23%',
+    },
+    svg: {
+      transform: 'rotate(40deg)',
+    },
+    lines: {
+      opacity: 0,
+    },
+  },
+  light: {
+    circle: {
+      r: 5,
+    },
+    mask: {
+      cx: '100%',
+      cy: '0%',
+    },
+    svg: {
+      transform: 'rotate(90deg)',
+    },
+    lines: {
+      opacity: 1,
+    },
+  },
+  springConfig: { mass: 4, tension: 250, friction: 35 },
+};
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,15 +45,6 @@ const App = () => {
   const [hasSearch, setHasSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [isDarkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Determine whether it's night or day
-    const currentHour = new Date().getHours();
-    const isNight = currentHour >= 19 || currentHour < 7; // Night: 7 PM to 7 AM
-
-    // Set dark mode based on the time of day
-    setDarkMode(isNight);
-  }, []);
 
   const handleSearch = async ({ search_term, filter, topN, comparisonWebsites }) => {
     setIsSearching(true);
