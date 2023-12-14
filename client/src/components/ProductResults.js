@@ -14,7 +14,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
 				</div>
 				:
 				!!showResults ?
-				products.length > 0 ? 
+				products.length > 0 ?
 				<div>
 					<ul style={styles.list}>
 						{

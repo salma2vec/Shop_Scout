@@ -6,47 +6,146 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
   }
-  
-  /* Header styles */
-  header {
+
+/* Header styles */
+header {
     background-color: #333;
     color: #fff;
     padding: 1rem;
     text-align: center;
   }
-  
+
   h1 {
     font-size: 2rem;
   }
-  
+
   /* Main content styles */
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
   }
-  
+
   /* Form styles */
   form {
     margin-bottom: 2rem;
   }
-  
+
   label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
   }
-  
+
   input, select {
     width: 100%;
     padding: 0.5rem;
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   /* Button styles */
   button {
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.gradient-text {
+    /* Fallback: Set a background color. */
+    background-color: #CA4246;
+
+    /* Create the gradient. */
+    background-image: linear-gradient(
+        45deg,
+        #CA4246 16.666%,
+        #E16541 16.666%,
+        #E16541 33.333%,
+        #F18F43 33.333%,
+        #F18F43 50%,
+        #8B9862 50%,
+        #8B9862 66.666%,
+        #476098 66.666%,
+        #476098 83.333%,
+        #A7489B 83.333%
+    );
+
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+.gradient-text:hover{
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+
+/* Main content styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Form styles */
+form {
+    margin-bottom: 2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styles */
+button {
     background-color: #4caf50;
     color: #fff;
     /* padding: 0.75rem 1rem; */
@@ -55,35 +154,59 @@ body {
     cursor: pointer;
     font-size: 1rem;
   }
-  
+
   /* Product result styles */
   .product {
+}
+
+/* Product result styles */
+.product {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 1rem;
     margin-bottom: 1rem;
   }
-  
+
   .product img {
     max-width: 100%;
     height: auto;
   }
-  
+
   /* Footer styles */
   footer {
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer styles */
+footer {
     background-color: #333;
     color: #fff;
     padding: 1rem;
     text-align: center;
   }
-  
+
   /* Responsive styles */
   @media only screen and (max-width: 600px) {
     h1 {
       font-size: 1.5rem;
     }
-  
+
     .container {
       padding: 1rem;
     }
   }
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}

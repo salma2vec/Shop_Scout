@@ -3,7 +3,11 @@ import React, { useState } from "react";
 function Hero() {
   const [searchTerm, setSearchTerm] = useState("");
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 5f9f39945626a3edb1ff6f38c115b683346fed9c
   return (
     <div className="w-full h-screen flex items-center justify-center p-10 md:p-20">
       <div className="w-full ">
