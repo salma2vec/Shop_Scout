@@ -37,7 +37,7 @@ const ComparisonForm = ({ onCompare }) => {
               type="text"
               id="searchTerm"
               name="search_term"
-              placeholder="Search Term"
+              placeholder="Enter Search Term"
               required
               maxLength="20"
               onChange={(e) => onSearchTermChange(e.target.value)}
@@ -80,7 +80,6 @@ const ComparisonForm = ({ onCompare }) => {
             className="rounded-full bg-transparent border border-white focus:border-lightGreen focus:ring-0"
           />
 
-          <label>Comparison Websites:</label>
           <div>
             <label>
               <input
