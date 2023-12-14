@@ -1,5 +1,4 @@
-import React from 'react';
-import { DarkModeProvider } from './DarkModeContext';
+import React, { useState, useEffect } from 'react';
 import ComparisonForm from './components/ComparisonForm';
 import ProductResults from './components/ProductResults';
 import axios from 'axios';
@@ -7,10 +6,20 @@ import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [results, setResults] = React.useState([]);
-  const [hasSearch, setHasSearch] = React.useState(false);
-  const [isSearching, setIsSearching] = React.useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  const [hasSearch, setHasSearch] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isDarkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Determine whether it's night or day
+    const currentHour = new Date().getHours();
+    const isNight = currentHour >= 19 || currentHour < 7; // Night: 7 PM to 7 AM
+
+    // Set dark mode based on the time of day
+    setDarkMode(isNight);
+  }, []);
 
   const handleSearch = async ({ search_term, filter, topN, comparisonWebsites }) => {
     setIsSearching(true);
@@ -31,17 +40,19 @@ const App = () => {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!isDarkMode);
+  };
+
   return (
-    <DarkModeProvider>
-      <div className={isDarkMode ? 'dark' : 'light'}>
-        <Navbar />
-        <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
-        <div className="grid grid-cols-2">
-          <ComparisonForm searchTerm={searchTerm} onCompare={handleSearch} />
-          <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
-        </div>
+    <div className={isDarkMode ? 'dark' : 'light'}>
+      <Navbar toggleDarkMode={toggleDarkMode} />
+      <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
+      <div className="grid grid-cols-2">
+        <ComparisonForm searchTerm={searchTerm} onCompare={handleSearch} />
+        <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
       </div>
-    </DarkModeProvider>
+    </div>
   );
 };
 

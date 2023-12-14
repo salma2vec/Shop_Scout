@@ -72,21 +72,19 @@ const ComparisonForm = ({ onCompare }) => {
           />
 
           <div>
-            <label>
-              Comparison Websites:
-              <select
-                multiple
-                name="comparisonWebsites"
-                onChange={handleCheckboxChange}
-                value={formData.comparisonWebsites}
-                className="rounded-full bg-transparent border border-white focus:border-lightGreen focus:ring-0"
-              >
-                <option value="Amazon">Amazon</option>
-                <option value="Flipkart">Flipkart</option>
-                <option value="Snapdeal">Snapdeal</option>
-                <option value="Alibaba">Alibaba</option>
-              </select>
-            </label>
+            <label>Comparison Websites:</label>
+            {["Amazon", "Flipkart", "Snapdeal", "Alibaba"].map((website) => (
+              <div key={website} className="flex items-center">
+                <input
+                  type="checkbox"
+                  name={website}
+                  checked={formData.comparisonWebsites.includes(website)}
+                  onChange={handleCheckboxChange}
+                  className="mr-2"
+                />
+                <span>{website}</span>
+              </div>
+            ))}
           </div>
 
           <div className="flex items-center justify-center">
