@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const ComparisonForm = ({ onCompare }) => {
-
   const [searchTerm, onSearchTermChange] = useState("");
 
   const [formData, setFormData] = useState({
@@ -17,10 +16,10 @@ const ComparisonForm = ({ onCompare }) => {
   };
 
   const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
+    const { name, checked } = e.target;
     const updatedWebsites = checked
-      ? [...formData.comparisonWebsites, value]
-      : formData.comparisonWebsites.filter((site) => site !== value);
+      ? [...formData.comparisonWebsites, name]
+      : formData.comparisonWebsites.filter((site) => site !== name);
     setFormData({ ...formData, comparisonWebsites: updatedWebsites });
   };
 
@@ -30,37 +29,9 @@ const ComparisonForm = ({ onCompare }) => {
   };
 
   return (
-    <div id="products" className="flex items-center justify-center w-full ">
+    <div id="products" className="flex items-center justify-center w-full">
       <div className="flex items-center justify-start w-full flex-col gap-20 p-10 md:p-20">
-        <div className="flex flex-col gap-4 items-start justify-center w-full">
-          {/* <h1 className="font-bold text-4xl md:text-5xl leading-none max-w-2xl">
-            Compare prices of products from different websites
-          </h1>
-          <p className="text-lg leading-tight md:text-xl">
-            Search for a product and compare prices from your favorite websites
-          </p> */}
-          {/* <div className="flex items-start md:items-center justify-center md:flex-row flex-col gap-4 mt-4 ">
-            <div className="flex items-center justify-center ">
-              <input
-                type="text"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Find a perfect product"
-                className=" py-3 px-6 !mb-0 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-lightGreen focus:border-transparent"
-              />
-            </div>
-            <div className="flex items-center justify-center">
-              <a
-                href="#products"
-                className="py-3 px-6 rounded-full bg-lightGreen text-white font-bold"
-              >
-                Search
-              </a>
-            </div>
-          </div> */}
-        </div>
-
         <form onSubmit={handleSubmit} className="w-full">
-          {/* <label htmlFor="searchTerm">Search Term:</label> */}
           <div className="flex items-center justify-center w-full gap-4">
             <input
               type="text"
