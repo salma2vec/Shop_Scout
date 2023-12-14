@@ -51,7 +51,7 @@ const App = () => {
     try {
       const response = await axios({
         method: 'POST',
-        url: `${process.env.REACT_APP_HOST_URL}/products`,
+        url:  'https://shopscout-production-2883.up.railway.app/products',
         data: { search_term, filter, topN, comparisonWebsites },
       });
       const data = response.data;
