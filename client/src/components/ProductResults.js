@@ -23,7 +23,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
           <div>
             <ul style={styles.list}>
               {products.map((product, index) => (
-                <li index={index}>
+                <li key={index} style={styles.listItem}>
                   <ProductCard product={product} />
                 </li>
               ))}
@@ -41,7 +41,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
           </div>
         )
       ) : (
-        <div style={{ ...styles.helperContainer, textAlign: "center" }}>
+        <div style={styles.centeredContainer}>
           <p style={{ fontWeight: "bold" }}>
             Begin your product search by entering relevant keywords into the
             search bar and clicking the "Search Now" button.
@@ -83,6 +83,9 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     gap: "14px",
+  },
+  centeredContainer: {
+    textAlign: "center",
   },
 };
 

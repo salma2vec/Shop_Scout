@@ -44,15 +44,6 @@ const ComparisonForm = ({ onCompare }) => {
               value={searchTerm}
               className="rounded-full bg-transparent border border-white focus:border-lightGreen focus:ring-0"
             />
-
-            <div className="flex items-center justify-center">
-              <button
-                type="submit"
-                className="px-6 py-2 mb-4 bg-lightGreen rounded-full"
-              >
-                Search
-              </button>
-            </div>
           </div>
 
           <label htmlFor="filter">Filter:</label>
@@ -82,45 +73,29 @@ const ComparisonForm = ({ onCompare }) => {
 
           <div>
             <label>
-              <input
-                type="checkbox"
-                name="Amazon"
-                checked={formData.comparisonWebsites.includes("Amazon")}
+              Comparison Websites:
+              <select
+                multiple
+                name="comparisonWebsites"
                 onChange={handleCheckboxChange}
-                className="rounded-full"
-              />
-              Amazon
+                value={formData.comparisonWebsites}
+                className="rounded-full bg-transparent border border-white focus:border-lightGreen focus:ring-0"
+              >
+                <option value="Amazon">Amazon</option>
+                <option value="Flipkart">Flipkart</option>
+                <option value="Snapdeal">Snapdeal</option>
+                <option value="Alibaba">Alibaba</option>
+              </select>
             </label>
-            <label>
-              <input
-                type="checkbox"
-                name="Flipkart"
-                checked={formData.comparisonWebsites.includes("Flipkart")}
-                onChange={handleCheckboxChange}
-                className="rounded-full"
-              />
-              Flipkart
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="Snapdeal"
-                checked={formData.comparisonWebsites.includes("Snapdeal")}
-                onChange={handleCheckboxChange}
-                className="rounded-full"
-              />
-              Snapdeal
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="Alibaba"
-                checked={formData.comparisonWebsites.includes("Alibaba")}
-                onChange={handleCheckboxChange}
-                className="rounded-full"
-              />
-              Alibaba
-            </label>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              className="px-6 py-2 mb-4 bg-lightGreen rounded-full"
+            >
+              Search Now
+            </button>
           </div>
         </form>
       </div>
