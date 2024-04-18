@@ -4,7 +4,7 @@ import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-center px-8 py-2" style={}>
+    <div className="flex items-center justify-center px-8 py-2">
       <div className="flex items-center justify-between w-full">
         <div className="w-20 rounded-full">
           <img src={LogoImg} alt="logo" className="" />
