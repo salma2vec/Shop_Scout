@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import DefaultInput from "./Forms/DefaultInput";
+import DefaultLabel from "./Forms/DefaultLabel";
+import DefaultSelect from "./Forms/DefaultSelect";
+import DefaultCheckbox from "./Forms/DefaultCheckbox";
 
 const ComparisonForm = ({ onCompare }) => {
-  const [searchTerm, onSearchTermChange] = useState("");
-
+  const FILTER_OPTIONS = ["none", "highestPrice", "lowestPrice", "highestRating"];
+  const AVAILABLE_STORES = ["Amazon", "Flipkart", "Snapdeal", "Alibaba"];  // TODO: store in db, env ?
+  
+  const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
     search_term: "",
     filter: "",
     topN: 3,
     comparisonWebsites: ["Amazon", "Flipkart", "Snapdeal", "Alibaba"],
   });
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -30,68 +37,64 @@ const ComparisonForm = ({ onCompare }) => {
   };
 
   return (
-    <div id="products" className="flex items-center justify-center w-full">
-      <div className="flex flex-col items-center justify-start w-full gap-20 p-10 md:p-20">
-        <form onSubmit={handleSubmit} className="w-full">
-          <div className="flex items-center justify-center w-full gap-4">
-            <input
-              type="text"
-              id="searchTerm"
-              name="search_term"
-              placeholder="Enter Search Term"
-              required
-              maxLength="20"
-              onChange={(e) => onSearchTermChange(e.target.value)}
-              value={searchTerm}
-              className="bg-transparent border border-white rounded-full focus:border-lightGreen focus:ring-0"
-            />
-          </div>
-
-          <label htmlFor="filter">Filter:</label>
-          <select
-            id="filter"
-            name="filter"
-            onChange={handleChange}
-            value={formData.filter}
-            className="bg-transparent border border-white rounded-full focus:border-lightGreen focus:ring-0"
-          >
-            <option value="none">None</option>
-            <option value="highestPrice">Highest Price</option>
-            <option value="lowestPrice">Lowest Price</option>
-            <option value="highestRating">Highest Rating</option>
-          </select>
-
-          <label htmlFor="topN">Top N:</label>
-          <input
-            type="number"
-            id="topN"
-            name="topN"
-            min="1"
-            onChange={handleChange}
-            value={formData.topN}
-            className="bg-transparent border border-white rounded-full focus:border-lightGreen focus:ring-0"
+    <div id="products" className="flex items-center justify-center w-full ">
+      <div className="flex flex-col items-center justify-start w-full px-10 py-10 md:px-20 bg-lightGreen">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full gap-2 m-0">
+          <DefaultInput
+            id="searchTerm"
+            name="search_term"
+            placeholder="Enter Search Term"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            required={true}
           />
-
-          <div>
-            <label>Comparison Websites:</label>
-            {["Amazon", "Flipkart", "Snapdeal", "Alibaba"].map((website) => (
-              <div key={website} className="flex items-center">
-                <input
-                  type="checkbox"
-                  name={website}
-                  checked={formData.comparisonWebsites.includes(website)}
-                  onChange={handleCheckboxChange}
-                  className="mr-2"
-                />
-                <span>{website}</span>
-              </div>
-            ))}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <DefaultLabel
+                htmlFor="filter"
+                className="text-white"
+                text="Filter:"
+              />
+              <DefaultSelect
+                id="filter"
+                name="filter"
+                onChange={handleChange}
+                value={formData.filter}
+                options={FILTER_OPTIONS}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <DefaultLabel htmlFor="topN" text="Top N:" />
+              <DefaultInput
+                type={"number"}
+                id="topN"
+                name="topN"
+                onChange={handleChange}
+                value={formData.topN}
+                className="p-2 m-0 text-white bg-transparent border border-white rounded-full outline-none focus:border-teleMagenta focus:ring-0"
+              />
+            </div>
           </div>
-
+          <div>
+            <DefaultLabel text="Comparison Websites:" />
+            <div className="flex items-center justify-between">
+              {AVAILABLE_STORES.map((website) => (
+                <div key={website} className="flex items-center gap-2">
+                  <DefaultCheckbox
+                    name={website}
+                    checked={formData.comparisonWebsites.includes(website)}
+                    onChange={handleCheckboxChange}
+                    className="m-0"
+                  />
+                  <span className="text-white">{website}</span>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="px-6 py-2 mb-4 rounded-full bg-lightGreen"
+              className="px-6 py-2 text-gray-800 bg-white rounded-full"
             >
               Search Now
             </button>
@@ -102,4 +105,7 @@ const ComparisonForm = ({ onCompare }) => {
   );
 };
 
+ComparisonForm.propTypes = {
+  onCompare: PropTypes.func,
+};
 export default ComparisonForm;
