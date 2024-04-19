@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom';
 import App from './App';
 import './index.css';
 import './DarkModeToggle.css'; // Import the DarkModeToggle.css file
 
-ReactDOM.render(
+// Render the App component
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
