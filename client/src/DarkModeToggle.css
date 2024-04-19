@@ -22,8 +22,8 @@
 
   .tdnn {
     margin: 0 auto;
-    font-size: 30%;
-    margin-top: 10em;
+    font-size: 0.1em;
+    /* margin-top: 10em; */
     position: relative;
     height: var(--toggleHeight);
     width: var(--toggleWidth);
