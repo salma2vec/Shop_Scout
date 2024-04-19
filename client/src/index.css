@@ -37,13 +37,13 @@ header {
     font-weight: bold;
   }
 
-  input, select {
+  /* input, select {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
+  } */
 
   /* Button styles */
   button {
@@ -136,13 +136,13 @@ label {
     font-weight: bold;
 }
 
-input, select {
+/* input, select {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
+} */
 
 /* Button styles */
 button {
@@ -209,4 +209,17 @@ footer {
     .container {
         padding: 1rem;
     }
+}
+
+/* hide default arrows from number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

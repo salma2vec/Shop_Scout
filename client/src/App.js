@@ -73,10 +73,8 @@ const App = () => {
     <div className={isDarkMode ? 'dark' : 'light'}>
       <Navbar toggleDarkMode={toggleDarkMode} />
       <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
-      <div className="grid grid-cols-2">
         <ComparisonForm searchTerm={searchTerm} onCompare={handleSearch} />
         <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
-      </div>
     </div>
   );
 };
