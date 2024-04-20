@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const ProductCard = ({product}) => {
+const ProductCard = ({ columns, data}) => {
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
     return (
-        <div style={styles.card}>
-            <div style={styles.cardHeader}>
-                <p style={styles.title}>Product name</p>
-                <div style={styles.cardHeaderInfo}>
-                    <strong>{product.title}</strong> 
-                    <img src={product.image} width={32} height={32} alt={product.title} />
-                </div>
-            </div>
-            <div style={styles.cardFooter}>
-                <div style={styles.cardFooterInfo}>
-                    <p>From {product.website}</p>
-                    <p>Ratings {product.rating}</p>
-                    <p>Total reviews {product.reviews}</p>
-                </div>
-                <p style={styles.price}>$ {product.price.toFixed(2)}</p>
-            </div>
+        <div className='grid grid-cols-4 gap-2'>
+            {
+                data.map((product, index) => (
+                    <div key={index} style={styles.card}>
+                        <div style={styles.cardHeader}>
+                            <div style={styles.cardHeaderInfo}>
+                                <div style={styles.title}>{product.title}</div>
+                                <div>{product.website}</div>
+                            </div>
+                            <div style={styles.cardFooterInfo}>
+                                <div>{product.rating}</div>
+                                <div style={styles.price}>{product.price}</div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     )
 }
@@ -28,16 +33,20 @@ const styles = {
         flexDirection: "column",
         gap: "4px",
 		borderBottom: "1px solid #eee",
-		padding: "10px 0",
+        borderRadius: "0.5em",
+		padding: "0.5em",
+        boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.1)",
 	},
     cardHeader: {
         display: "flex",
         flexDirection: "column",
+        justifyContent: "space-between",
+        height: "80px"
     },
     cardHeaderInfo: {
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "start",
         gap: "4px"
     },
     cardFooter: {
@@ -46,10 +55,11 @@ const styles = {
     },
     cardFooterInfo: {
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "end"
     },
     title: {
-        fontSize: "12px",
+        fontSize: "0.8em",
         fontWeight: "bold"
     },
     price: {
