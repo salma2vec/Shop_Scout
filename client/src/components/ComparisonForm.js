@@ -5,11 +5,10 @@ import DefaultLabel from "./Forms/DefaultLabel";
 import DefaultSelect from "./Forms/DefaultSelect";
 import DefaultCheckbox from "./Forms/DefaultCheckbox";
 
-const ComparisonForm = ({ onCompare }) => {
+const ComparisonForm = ({ searchTerm, onSearchTermChange, onCompare }) => {
   const FILTER_OPTIONS = ["none", "highestPrice", "lowestPrice", "highestRating"];
   const AVAILABLE_STORES = ["Amazon", "Flipkart", "Snapdeal", "Alibaba"];  // TODO: store in db, env ?
   
-  const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
     search_term: "",
     filter: "",
@@ -45,7 +44,7 @@ const ComparisonForm = ({ onCompare }) => {
             name="search_term"
             placeholder="Enter Search Term"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => onSearchTermChange(e.target.value)}
             required={true}
           />
           <div className="flex items-center gap-4">
@@ -106,6 +105,7 @@ const ComparisonForm = ({ onCompare }) => {
 };
 
 ComparisonForm.propTypes = {
+  onSearchTermChange: PropTypes.func,
   onCompare: PropTypes.func,
 };
 export default ComparisonForm;

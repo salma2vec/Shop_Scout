@@ -14,9 +14,9 @@ const Navbar = () => {
         </div>
         <div className="flex items-center justify-center gap-4">
           {isLoggedin ? (
-            <DefaultButton text="Disconnect" color={"bg-lightGreen"} />
+            <DefaultButton text="Disconnect" backgroundColor={"bg-vividCerulean"} />
           ) : (
-            <DefaultButton text="Login" color={"bg-lightGreen"} />
+            <DefaultButton text="Login" backgroundColor={"bg-vividCerulean"} />
           )}
           {/* <a href="/signup" className="px-4 py-1 text-white rounded-full hover:text-gray-600 bg-lightGreen">
             Sign Up

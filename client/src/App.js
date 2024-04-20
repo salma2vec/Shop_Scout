@@ -48,6 +48,7 @@ const App = () => {
 
   const handleSearch = async ({ search_term, filter, topN, comparisonWebsites }) => {
     setIsSearching(true);
+    setHasSearch(false);
     try {
       const response = await axios({
         method: 'POST',
@@ -57,7 +58,7 @@ const App = () => {
       const data = response.data;
       console.log(data);
       setResults(data.products);
-      setHasSearch(!!data.products ? true : false);
+      setHasSearch(!!data.products);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -73,7 +74,7 @@ const App = () => {
     <div className={isDarkMode ? 'dark' : 'light'}>
       <Navbar toggleDarkMode={toggleDarkMode} />
       <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
-        <ComparisonForm searchTerm={searchTerm} onCompare={handleSearch} />
+        <ComparisonForm searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
         <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
     </div>
   );

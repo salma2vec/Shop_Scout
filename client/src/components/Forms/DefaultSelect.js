@@ -11,7 +11,7 @@ const DefaultSelect = ({ id, name, value, className, onChange, options }) => {
       onChange={onChange}
     >
       {options.map((option, index) => (
-        <option key={index} value={option}>
+        <option key={index} value={option} className="text-gray-800">
           {option}
         </option>
       ))}
@@ -23,6 +23,7 @@ DefaultSelect.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string,
