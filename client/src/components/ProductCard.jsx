@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react'
 
 const ProductCard = ({ columns, data}) => {
-
-    useEffect(() => {
-        console.log(data)
-    }, [data])
     return (
         <div className='grid grid-cols-4 gap-2'>
             {
