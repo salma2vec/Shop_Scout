@@ -46,14 +46,14 @@ const App = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [isDarkMode, setDarkMode] = useState(false);
 
-  const handleSearch = async ({ search_term, filter, topN, comparisonWebsites }) => {
+  const handleSearch = async ({ search_term, filter, topN, country, comparisonWebsites }) => {
     setIsSearching(true);
     setHasSearch(false);
     try {
       const response = await axios({
         method: 'POST',
         url:  `${process.env.REACT_APP_API_URL}/products`,
-        data: { search_term, filter, topN, comparisonWebsites },
+        data: { search_term, filter, topN, country, comparisonWebsites },
       });
       const data = response.data;
       console.log(data);

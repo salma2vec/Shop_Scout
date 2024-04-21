@@ -32,6 +32,9 @@ const ComparisonForm = ({ searchTerm, onSearchTermChange, onCompare }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     formData.search_term = searchTerm;
+    formData.country = "IN";
+
+    console.log(`Form Data: ${JSON.stringify(formData)}`)
     onCompare(formData);
   };
 

@@ -21,6 +21,7 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
     */
     e.preventDefault();
     formData.search_term = searchTerm;
+    formData.country = "IN";
     onCompare(formData);
   };
   return (
