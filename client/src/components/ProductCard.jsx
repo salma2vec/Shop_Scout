@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ProductCard = ({ columns, data}) => {
     return (
@@ -37,7 +38,7 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: "80px"
+        height: "100%"
     },
     cardHeaderInfo: {
         display: "flex",
@@ -62,4 +63,10 @@ const styles = {
         textAlign: "right"
     }
 }
+
+ProductCard.propTypes = {
+    columns: PropTypes.array,
+    data: PropTypes.array,
+};
+
 export default ProductCard

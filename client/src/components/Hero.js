@@ -1,10 +1,28 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import DataExtraction from "../assets/illustrations/DataExtraction";
 import DefaultInput from "./Forms/DefaultInput";
+import DefaultButton from "./Button/DefaultButton";
 
-function Hero() {
-  const [searchTerm, setSearchTerm] = useState("");
+const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
 
+  const [formData, setFormData] = useState({
+    search_term: "",
+    filter: "",
+    topN: 3,
+    comparisonWebsites: ["Amazon", "Flipkart", "Snapdeal", "Alibaba"],
+  });
+  
+  const handleSearch = (e) => {
+    /*
+    * Handle search form submission
+    *
+    * @param e - Event object
+    */
+    e.preventDefault();
+    formData.search_term = searchTerm;
+    onCompare(formData);
+  };
   return (
     <div className="flex flex-wrap-reverse items-center w-full h-screen md:justify-center lg:flex-nowrap">
       <div className="w-full mx-10 md:mx-20">
@@ -19,16 +37,15 @@ function Hero() {
             <div className="flex items-center justify-center ">
               <DefaultInput
                 placeholder={"Find the Best Deals"}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => onSearchTermChange(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-center">
-              <a
-                href="#products"
-                className="px-6 py-3 font-bold text-white rounded-full bg-lightGreen"
-              >
-                Search Now
-              </a>
+              <DefaultButton
+                text="Search Now"
+                backgroundColor="bg-vividCerulean"
+                onClick={handleSearch}
+              />
             </div>
           </div>
         </div>
@@ -40,4 +57,9 @@ function Hero() {
   );
 }
 
+Hero.propTypes = {
+  searchTerm: PropTypes.string,
+  onSearchTermChange: PropTypes.func,
+  onCompare: PropTypes.func,
+};
 export default Hero;

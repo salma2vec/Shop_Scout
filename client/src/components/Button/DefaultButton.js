@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DefaultButton = ({ text, color, onClick }) => {
+const DefaultButton = ({ text, backgroundColor, backgroundColorHover, onClick }) => {
   
   return (
-    <button className={`px-4 py-1 text-white rounded-full ${color} hover:text-gray-400`} onClick={onClick}>
+    <button className={`px-4 py-1 text-white rounded-full ${backgroundColor} hover:${backgroundColorHover || "text-gray-100"} hover:text-gray-400`} onClick={onClick}>
       {text}
     </button>
   );
@@ -12,7 +12,8 @@ const DefaultButton = ({ text, color, onClick }) => {
 
 DefaultButton.propTypes = {
   text: PropTypes.string.isRequired,
-  color: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  backgroundColorHover: PropTypes.string,
   onClick: PropTypes.func,
 };
 
