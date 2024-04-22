@@ -8,7 +8,7 @@ import cors from "cors";
 import { connectToDatabase } from "./utils/databaseConnector";
 
 //Models
-import { Product, findProducts } from "./models/searchResult";
+import { Product, findProducts } from "./models/searchSchema";
 import { Product as ProductInterface } from "./interfaces/Product";
 
 // Scrapers
@@ -17,7 +17,7 @@ import {
 	findProductsOnFlipkart,
 	findProductsOnAlibaba,
 	findProductsOnSnapdeal,
-} from "./scrapers/index.js";
+} from "./scrapers/index";
 
 interface FilterObject {
 	fieldToFilter: string;

@@ -8,16 +8,17 @@ import LoadingIcon from "../assets/icons/LoadingIcon";
 import NotFoundIcon from "../assets/icons/NotFoundIcon";
 import ProductCard from "./ProductCard";
 
+/*
+ * View for the product results
+ *
+ * @param products - Array of products
+ * @param showResults - Boolean to show results
+ * @param isSearching - Boolean to show loading icon
+ * 
+ * @returns {JSX.Element}
+ */
 const ProductResults = ({ products, showResults, isSearching }) => {
-  /*
-  * View for the product results
-  *
-  * @param products - Array of products
-  * @param showResults - Boolean to show results
-  * @param isSearching - Boolean to show loading icon
-  * 
-  * @returns {JSX.Element}
-  */
+  
   const AVAILABLE_VIEWS = [
     {
       key: "table",
@@ -133,10 +134,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
       </div>
     }
     setContent(newContent);
-    // scroll to the bottom of the page so the user
-    setTimeout(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    }, 100);
+    
 
   }, [isSearching, showResults, currentView])
   return (

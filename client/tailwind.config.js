@@ -4,16 +4,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkBlue: "#264653",
-        lightGreen: "#00a6fb",
-        lightYellow: "#e9c46a",
-        lightOrange: "#f4a261",
-        darkBlack: "#000814",
+        // darkBlue: "#264653",
+        // lightGreen: "#00a6fb",
+        // lightYellow: "#e9c46a",
+        // lightOrange: "#f4a261",
+        // darkBlack: "#000814",
+        lightWhite: "#ededed",
+        lighterWhite: "#f5f5f5",
+        darkBlack: "#1f1f1f",
+        darkerBlack: "#121212",
+        
+        vividCerulean: "#00AAEE",  // default blue ( closest websafe #0099FF )
+        vividCeruleanLight: "#4DC4F3",  // default blue ( lighter )
+        vividCeruleanDark: "#0077A7",  // default blue ( darker )
 
-        vividCerulean: "#00a6fb",  // default blue ( closest websafe #0099FF )
+        teleMagenta: "#d43370", // default pink ( closest websafe #CC3366 )
+
         orangePantone: "#FF5904",  // default blue ( inverse )
         willpowerOrange: "#00a6fb",  // default blue ( complementary )
-        teleMagenta: "#d43370", // default pink ( closest websafe #CC3366 )
         mountainMeadowGreen: "#2BCC8F", // default pink ( inverse )
         eucalyptusGreen: "#33D497" // default pink ( complementary )
       },
