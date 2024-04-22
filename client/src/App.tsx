@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
 // Components
 import ComparisonForm from './components/ComparisonForm';
 import ProductResults from './components/ProductResults';
-import axios from 'axios';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import BannerEnv from './components/BannerEnv';
 
+// Stores
+import { setPreferedTheme } from './stores/userStore';
+
+// Utils
+import themeHelper from './utils/themeHelper';
+
+// Api
+import { fetchProducts } from './api/products';
+
 const App = () => {
+  const dispatch = useDispatch();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const [hasSearch, setHasSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const preferedTheme = useSelector((state) => state.user.preferedTheme);
 
-  console.log("preferedTheme", preferedTheme);
   const handleSearch = async ({ search_term, filter, topN, country, comparisonWebsites }) => {
     setIsSearching(true);
     setHasSearch(false);
@@ -28,13 +37,7 @@ const App = () => {
     }, 100);
 
     try {
-      const response = await axios({
-        method: 'POST',
-        url:  `${process.env.REACT_APP_API_URL}/products`,
-        data: { search_term, filter, topN, country, comparisonWebsites },
-      });
-      const data = response.data;
-      console.log(data);
+      const data = await fetchProducts(search_term, filter, topN, country, comparisonWebsites);
       setResults(data.products);
       setHasSearch(!!data.products);
     } catch (error) {
@@ -48,6 +51,18 @@ const App = () => {
     'bg-darkBlack': preferedTheme === 'dark',
     'bg-lightWhite': preferedTheme === 'light',
   });
+
+  
+  useEffect(() => {
+    let theme = localStorage.getItem('theme');
+
+    if (theme) {
+      dispatch(setPreferedTheme(theme));
+    } else {
+      dispatch(setPreferedTheme(themeHelper.getUserPreferedSchema()));
+    }
+    
+  }, []);
 
   return (
     <div className={wrapperClasses}>

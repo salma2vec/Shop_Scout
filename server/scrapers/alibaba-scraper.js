@@ -31,7 +31,7 @@ export const findProductsOnAlibaba = async (search_term, country) => {
 
   if ($("div.fy23-search-card.m-gallery-product-item-v2.J-search-card-wrapper.searchx-offer-item").length > 0) {
     console.log("Found products on Alibaba")
-    console.log(`Contents: ${$("div.fy23-search-card.m-gallery-product-item-v2.J-search-card-wrapper.searchx-offer-item").html()}`)
+    // console.log(`Contents: ${$("div.fy23-search-card.m-gallery-product-item-v2.J-search-card-wrapper.searchx-offer-item").html()}`)
     // start
     $("div.fy23-search-card.m-gallery-product-item-v2.J-search-card-wrapper.searchx-offer-item").each((index, element) => {
       const product = {
@@ -56,7 +56,7 @@ export const findProductsOnAlibaba = async (search_term, country) => {
     console.log("No products found on Alibaba")
   }
 
-  console.log(`Products: ${JSON.stringify(products)}`)
+  // console.log(`Products: ${JSON.stringify(products)}`)
 
   if(products.length > 0) {
     console.log(`Products found on Alibaba for ${search_term}, total: ${products.length}`);

@@ -13,7 +13,7 @@ const ComparisonForm = ({ searchTerm, onSearchTermChange, onCompare }) => {
     search_term: "",
     filter: "",
     topN: 3,
-    comparisonWebsites: ["Amazon", "Flipkart", "Snapdeal", "Alibaba"],
+    comparisonWebsites: ["amazon", "flipkart", "snapdeal", "alibaba"],
   });
   
   const handleChange = (e) => {
