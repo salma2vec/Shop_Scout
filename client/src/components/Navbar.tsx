@@ -13,11 +13,10 @@ const Navbar = () => {
           <img src={LogoImg} alt="logo" className="" />
         </div>
         <div className="flex items-center justify-center gap-4">
-          {isLoggedin ? (
-            <DefaultButton text="Disconnect" backgroundColor={"bg-vividCerulean"} />
-          ) : (
-            <DefaultButton text="Login" backgroundColor={"bg-vividCerulean"} />
-          )}
+          <DefaultButton
+            text={ isLoggedin ? "Dashboard" : "Login" }
+            backgroundColor={"bg-vividCerulean"}
+          />
           {/* <a href="/signup" className="px-4 py-1 text-white rounded-full hover:text-gray-600 bg-lightGreen">
             Sign Up
           </a> */}

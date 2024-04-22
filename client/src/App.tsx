@@ -1,59 +1,37 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import classNames from 'classnames';
+
+// Components
 import ComparisonForm from './components/ComparisonForm';
 import ProductResults from './components/ProductResults';
 import axios from 'axios';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
-
-const defaultProperties = {
-  dark: {
-    circle: {
-      r: 9,
-    },
-    mask: {
-      cx: '50%',
-      cy: '23%',
-    },
-    svg: {
-      transform: 'rotate(40deg)',
-    },
-    lines: {
-      opacity: 0,
-    },
-  },
-  light: {
-    circle: {
-      r: 5,
-    },
-    mask: {
-      cx: '100%',
-      cy: '0%',
-    },
-    svg: {
-      transform: 'rotate(90deg)',
-    },
-    lines: {
-      opacity: 1,
-    },
-  },
-  springConfig: { mass: 4, tension: 250, friction: 35 },
-};
+import BannerEnv from './components/BannerEnv';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const [hasSearch, setHasSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [isDarkMode, setDarkMode] = useState(false);
+  const preferedTheme = useSelector((state) => state.user.preferedTheme);
 
-  const handleSearch = async ({ search_term, filter, topN, comparisonWebsites }) => {
+  console.log("preferedTheme", preferedTheme);
+  const handleSearch = async ({ search_term, filter, topN, country, comparisonWebsites }) => {
     setIsSearching(true);
     setHasSearch(false);
+
+    // scroll to the bottom of the page so the user
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
+
     try {
       const response = await axios({
         method: 'POST',
         url:  `${process.env.REACT_APP_API_URL}/products`,
-        data: { search_term, filter, topN, comparisonWebsites },
+        data: { search_term, filter, topN, country, comparisonWebsites },
       });
       const data = response.data;
       console.log(data);
@@ -66,13 +44,17 @@ const App = () => {
     }
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!isDarkMode);
-  };
+  const wrapperClasses = classNames('transition', 'transition-all', 'duration-500', 'ease-in-out', {
+    'bg-darkBlack': preferedTheme === 'dark',
+    'bg-lightWhite': preferedTheme === 'light',
+  });
 
   return (
-    <div className={isDarkMode ? 'dark' : 'light'}>
-      <Navbar toggleDarkMode={toggleDarkMode} />
+    <div className={wrapperClasses}>
+      {
+        process.env.NODE_ENV !== 'production' && <BannerEnv />
+      }
+      <Navbar />
       <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
         <ComparisonForm searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
         <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />

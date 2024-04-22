@@ -32,12 +32,15 @@ const ComparisonForm = ({ searchTerm, onSearchTermChange, onCompare }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     formData.search_term = searchTerm;
+    formData.country = "IN";
+
+    console.log(`Form Data: ${JSON.stringify(formData)}`)
     onCompare(formData);
   };
 
   return (
     <div id="products" className="flex items-center justify-center w-full ">
-      <div className="flex flex-col items-center justify-start w-full px-10 py-10 md:px-20 bg-lightGreen">
+      <div className="flex flex-col items-center justify-start w-full px-10 py-10 md:px-20 bg-vividCerulean">
         <form onSubmit={handleSubmit} className="flex flex-col w-full gap-2 m-0">
           <DefaultInput
             id="searchTerm"

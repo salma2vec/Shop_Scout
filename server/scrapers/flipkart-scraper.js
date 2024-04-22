@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
-export const findProductsOnFlipkart = async (search_term) => {
+export const findProductsOnFlipkart = async (search_term, country) => {
   const response = await fetch(
     `https://www.flipkart.com/search?q=${search_term}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off`,
     {
