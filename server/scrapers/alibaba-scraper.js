@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
-import { AVAILABLE_CURRENCIES } from "../utils/currency.js";
+import { AVAILABLE_CURRENCIES } from "@/utils/currency";
 
 export const findProductsOnAlibaba = async (search_term, country) => {
   console.log("Looking for products on Alibaba")

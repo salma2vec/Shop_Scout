@@ -5,8 +5,7 @@
   "type": "module",
   "main": "server.ts",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "nodemon ./server.ts --ignore 'dev/'",
+    "dev": "NODE_ENV=development nodemon ./server.ts --ignore 'dev/'",
     "start-client": "babel-node client/src/index.js",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-jwt": "^8.4.1",
     "mongoose": "^8.0.1",
     "morgan": "^1.10.0",
     "node-fetch": "^3.3.2",
