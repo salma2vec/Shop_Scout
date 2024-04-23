@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux';
+
+// Components
 import LogoImg from "../assets/logo-no-background.png";
 import DarkModeToggle from './DarkModeToggle';
 import DefaultButton from "./Button/DefaultButton";
 
 const Navbar = () => {
-  const [isLoggedin, setIsLoggedin] = useState(false);  // TODO: Implement login state, here just for dev purposes
+  const isLoggedin = useSelector((state) => state.user.isLoggedIn);
   
   return (
     <div className="flex items-center justify-center px-8 py-2">

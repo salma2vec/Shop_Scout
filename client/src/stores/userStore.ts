@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: { 
+  initialState: {
+    isLoggedIn: false, 
     preferedTheme: 'light',
    },
   reducers: {

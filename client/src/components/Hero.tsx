@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -6,10 +6,10 @@ import classNames from "classnames";
 import DataExtraction from "../assets/illustrations/DataExtraction";
 import DefaultInput from "./Forms/DefaultInput";
 import DefaultButton from "./Button/DefaultButton";
+import Typewriter from "./Typewritter";
 
 // Stores
 import { useSelector } from 'react-redux';
-
 
 /*
  * Hero component
@@ -29,7 +29,7 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
     topN: 3,
     comparisonWebsites: ["Amazon", "Flipkart", "Snapdeal", "Alibaba"],
   });
-  const [animatedText, setAnimatedText] = useState('');
+
   
   const handleSearch = (e) => {
     /*
@@ -47,13 +47,8 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
     <div className="flex flex-wrap-reverse items-center w-full h-screen md:justify-center lg:flex-nowrap">
       <div className="w-full mx-10 md:mx-20">
         <div className="flex flex-col items-start justify-center w-full gap-4">
-          <h1 className={classNames('max-w-2xl text-4xl font-bold leading-none md:text-5xl drop-shadow', {
-            'text-lighterWhite': preferedTheme === 'dark',
-            'text-darkerBlack': preferedTheme === 'light',
-          })}>
-            <span className="whitespace-nowrap">Elevate Your <span className="text-teleMagenta">E-commerce</span></span> Intelligence with ShopScout
-          </h1>
-          { animatedText }
+          
+          <Typewriter text='<span className="whitespace-nowrap">Elevate Your <span className="text-teleMagenta">E-commerce</span></span> Intelligence with ShopScout' delay={100} />
           <p className={classNames('text-lg leading-tight md:text-xl', {
             'text-lightWhite': preferedTheme === 'dark',
             'text-darkBlack': preferedTheme === 'light',

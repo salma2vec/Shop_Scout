@@ -15,6 +15,7 @@ const DarkModeToggle = () => {
     'sun': preferedTheme === 'light',
   })
   const handleThemeChange = () => {
+    localStorage.setItem('theme', preferedTheme === 'light' ? 'dark' : 'light'); // save the new theme to local storage
     dispatch(setPreferedTheme(preferedTheme === 'light' ? 'dark' : 'light')); // replace 'dark' with the new theme
   };
 

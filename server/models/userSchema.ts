@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -7,7 +7,7 @@ const abstractUserSchema = new Schema({
   email: { type: String, unique: true },
   sessionId: { type: String, unique: true },
   role: { type: String, enum: ["admin", "user", "anonymous"], default: "user" },
-}), { discriminatorKey: "role" };
+}, { discriminatorKey: "role" });
 
 const anonymousUserSchema = new Schema();
 anonymousUserSchema.add(abstractUserSchema);
@@ -25,7 +25,7 @@ regularUserSchema.add({
   lastName: String,
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", abstractUserSchema);
 const AnonymousUser = mongoose.model("AnonymousUser", anonymousUserSchema);
 const RegularUser = mongoose.model("RegularUser", regularUserSchema);
 

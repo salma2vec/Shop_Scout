@@ -134,6 +134,7 @@ app.post("/products", async (req: Request, res: Response) => {
 			// Combine the results from different websites into a single array
 			const allProducts = insertedProducts.flat();
 
+			
 			// Apply topN filter if specified
 			if (topN) {
 				allProducts.sort((a, b) => b.reviews - a.reviews); // Sort by reviews in descending order
