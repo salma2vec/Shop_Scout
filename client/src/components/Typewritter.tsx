@@ -8,30 +8,27 @@ const Typewriter = ({ text, delay }) => {
 
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTag, setIsTag] = useState(false);
+  const [isTag, setIsTag] = useState(true);
 
   useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setCurrentText(prevText => {
-          const nextChar = text[currentIndex];
-          if (nextChar === '<') {
-            setIsTag(true);
-          } else if (nextChar === '>') {
-            setIsTag(false);
-          }
+    // TODO: Implement better typing effect
+    const interval = setInterval(() => {
+      if (currentIndex === text.length) {
+        clearInterval(interval);
+        return;
+      }
+      
+      if (text[currentIndex] === '<') {
+        setIsTag(true);
+      } else if (text[currentIndex] === '>') {
+        setIsTag(false);
+      }
 
-          // Append the character to the current text if it's not a tag
-          if (!isTag) {
-            setCurrentIndex(prevIndex => prevIndex + 1);
-            return prevText + nextChar;
-          }
-          return prevText;
-        });
-      }, delay);
-  
-      return () => clearTimeout(timeout);
-    }
+      setCurrentText((prev) => prev + text[currentIndex]);
+      setCurrentIndex((prev) => prev + 1);
+    }, delay);
+
+    return () => clearInterval(interval);
   }, [currentIndex, delay, text, isTag]);
 
   return (
@@ -41,8 +38,8 @@ const Typewriter = ({ text, delay }) => {
         'text-darkerBlack': preferedTheme === 'light',
       })}
     >
-      <div dangerouslySetInnerHTML={{__html: currentText}}></div>
-
+      {/* <div dangerouslySetInnerHTML={{__html: currentText}}></div> */}
+      <span className="whitespace-nowrap">Elevate Your <span className="text-teleMagenta">E-commerce</span></span> Intelligence with ShopScout
     </h1>
   )
 };

@@ -1,4 +1,6 @@
-export const AVAILABLE_CURRENCIES = [
+import { Currency } from "../interfaces/Currency";
+
+export const AVAILABLE_CURRENCIES: Currency[] = [
   {
     code: "USD",
     symbol: "$",

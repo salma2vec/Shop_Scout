@@ -3,24 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
 // Components
-import ComparisonForm from './components/ComparisonForm';
-import ProductResults from './components/ProductResults';
-import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import BannerEnv from './components/BannerEnv';
-
-// Stores
-import { setPreferedTheme } from './stores/userStore';
-
-// Utils
-import themeHelper from './utils/themeHelper';
+import ComparisonForm from '../components/ComparisonForm';
+import ProductResults from '../components/ProductResults';
+import Hero from '../components/Hero';
+import Navbar from '../components/Navbar';
 
 // Api
-import { fetchProducts } from './api/products';
+import { fetchProducts } from '../api/products';
 
-const App = () => {
-  const dispatch = useDispatch();
-
+const Landing = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const [hasSearch, setHasSearch] = useState(false);
@@ -53,28 +44,16 @@ const App = () => {
   });
 
   
-  useEffect(() => {
-    let theme = localStorage.getItem('theme');
-
-    if (theme) {
-      dispatch(setPreferedTheme(theme));
-    } else {
-      dispatch(setPreferedTheme(themeHelper.getUserPreferedSchema()));
-    }
-    
-  }, []);
+  
 
   return (
     <div className={wrapperClasses}>
-      {
-        process.env.NODE_ENV !== 'production' && <BannerEnv />
-      }
       <Navbar />
       <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
-        <ComparisonForm searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
-        <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
+      <ComparisonForm searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
+      <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
     </div>
   );
 };
 
-export default App;
+export default Landing;
