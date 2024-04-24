@@ -10,6 +10,8 @@ import Landing from './pages/Landing';
 import NotFound from './pages/404';
 import BannerEnv from './components/BannerEnv';
 
+// Utils
+import themeHelper from './utils/themeHelper';
 
 const Root = () => {
   const dispatch = useDispatch();

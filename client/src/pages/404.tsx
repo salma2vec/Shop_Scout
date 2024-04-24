@@ -3,9 +3,6 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-// Stores
-import { setPreferedTheme } from '../stores/userStore';
-
 // Components
 import Navbar from "../components/Navbar";
 

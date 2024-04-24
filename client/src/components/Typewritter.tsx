@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import dangerouslySetInnerHTML from 'react-dangerously-set-html';
 
 const Typewriter = ({ text, delay }) => {
   const preferedTheme = useSelector((state) => state.user.preferedTheme);
