@@ -5,7 +5,7 @@ import classNames from "classnames";
 const DefaultButton = ({ text, backgroundColor, backgroundColorHover, padding, onClick }) => {
   
   return (
-    <button className={classNames(`${padding || "px-4 py-1"} text-white rounded-full ${backgroundColor} ${backgroundColorHover || "hover:bg-vividCeruleanDark"} hover:shadow-md`)} onClick={onClick}>
+    <button className={classNames(`${padding || "px-4 py-1"} text-white rounded-full ${backgroundColor || "bg-vividCerulean"} ${backgroundColorHover || "hover:bg-vividCeruleanDark"} hover:shadow-md`)} onClick={onClick}>
       {text}
     </button>
   );

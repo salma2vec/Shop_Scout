@@ -10,9 +10,13 @@ const userSlice = createSlice({
     setPreferedTheme: (state, action) => {
       state.preferedTheme = action.payload;
     },
+    logUserIn: (state, action) => {
+      state.isLoggedIn = true;
+      state.username = action.payload.username;
+    }
   },
 });
 
-export const { setPreferedTheme } = userSlice.actions;
+export const { setPreferedTheme, logUserIn } = userSlice.actions;
 
 export default userSlice.reducer;

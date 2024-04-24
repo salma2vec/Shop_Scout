@@ -143,4 +143,40 @@ authRouter.post("/auth", async (req: Request, res: Response) => {
   }
 });
 
+/*
+ * Identify a user based on the token
+ *
+ * POST /identify
+ * Request body:
+ * {
+ *  "token": ""
+ * }
+ * 
+ * Response:
+ * {
+ * "_id": "",
+ * "username": "",
+ * "email": "",
+ * "createdAt": "",
+ * "updatedAt": ""
+ * }
+ * 
+ */
+authRouter.post("/identify", async (req: Request, res: Response) => {
+  const { token } = req.body;
+
+  if (!token) {
+    res.status(400).send({
+      error: "Token is required",
+    });
+    return;
+  }
+
+  const tokenInformation = jwt.verify(token, process.env.TOKEN_SECRET);
+
+  const user = await RegularUser.findOne({ _id: tokenInformation._id });
+
+  res.send(user);
+});
+
 export default authRouter;

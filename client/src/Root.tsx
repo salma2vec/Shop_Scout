@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import { jwtDecode as jwt } from 'jwt-decode';
 
 // Stores
 import { setPreferedTheme } from './stores/userStore';
 
 // Components
 import Landing from './pages/Landing';
+import Login from './pages/Login';
 import NotFound from './pages/404';
 import BannerEnv from './components/BannerEnv';
 
@@ -15,9 +17,19 @@ import themeHelper from './utils/themeHelper';
 
 const Root = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     let theme = localStorage.getItem('theme');
-  
+    let accessToken = localStorage.getItem('access');
+    let refreshToken = localStorage.getItem('refresh');
+
+    if (!accessToken && !refreshToken) {
+      // TODO: just make sure the global state is updated
+    } else {
+      let decoded = jwt(accessToken);
+
+      console.log(decoded)
+    }
     if (theme) {
       dispatch(setPreferedTheme(theme));
     } else {
@@ -33,6 +45,7 @@ const Root = () => {
       }
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

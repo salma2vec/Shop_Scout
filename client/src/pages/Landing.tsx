@@ -43,9 +43,6 @@ const Landing = () => {
     'bg-lightWhite': preferedTheme === 'light',
   });
 
-  
-  
-
   return (
     <div className={wrapperClasses}>
       <Navbar />
