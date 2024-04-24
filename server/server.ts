@@ -7,9 +7,13 @@ import cors from "cors";
 // Routes and Controllers V1
 import usersRouter from "@/api/v1/users/users";
 import productsRouter from "@/api/v1/products/products";
+import marketsRouter from "./api/v1/markets/markets";
 
 // MongoDB
 import { connectToDatabase } from "./utils/databaseConnector";
+
+// Utils
+import { startupDb } from "./utils/boot";
 
 dotenv.config();
 
@@ -40,6 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 connectToDatabase(dbURI, dbName);
+startupDb();
 
 app.get("/", (req: Request, res: Response) => {
 	res.send("Hello, World! MongoDB connected successfully!");
@@ -48,6 +53,7 @@ app.get("/", (req: Request, res: Response) => {
 // API Routes
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/products", productsRouter);
+app.use("/api/v1/markets", marketsRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);

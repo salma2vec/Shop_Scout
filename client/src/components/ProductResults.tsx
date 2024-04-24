@@ -19,7 +19,7 @@ import ProductCard from "./ProductCard";
  */
 const ProductResults = ({ products, showResults, isSearching }) => {
   
-  const AVAILABLE_VIEWS = [
+  const AVAILABLE_VIEWS = useMemo(() => [
     {
       key: "table",
       component: ResultsTable,
@@ -28,7 +28,7 @@ const ProductResults = ({ products, showResults, isSearching }) => {
       key: "grid",
       component: ProductCard,
     }
-  ]
+  ], []);
   
   const columns = useMemo(
     () => [
@@ -136,47 +136,10 @@ const ProductResults = ({ products, showResults, isSearching }) => {
     setContent(newContent);
     
 
-  }, [isSearching, showResults, currentView])
+  }, [isSearching, showResults, currentView, AVAILABLE_VIEWS, products, columns, ViewComponent])
   return (
    <div>{content}</div>
   );
-};
-
-const styles = {
-  container: {
-    fontFamily: "Arial, sans-serif",
-    maxWidth: "600px",
-    margin: "0 auto",
-    padding: "20px",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    borderRadius: "8px",
-  },
-  heading: {
-    color: "#333",
-    fontSize: "24px",
-    marginBottom: "15px",
-  },
-  list: {
-    listStyle: "none",
-    padding: "0",
-  },
-  listItem: {
-    borderBottom: "1px solid #eee",
-    padding: "10px 0",
-  },
-  paragraph: {
-    fontSize: "14px",
-  },
-  helperContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "14px",
-  },
-  centeredContainer: {
-    textAlign: "center",
-  },
 };
 
 ProductResults.propTypes = {

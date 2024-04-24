@@ -7,7 +7,6 @@ const ResultsTable = ({ columns, data }) => {
   const {
     getTableProps,
     getTableBodyProps,
-    getSortByToggleProps,
     headerGroups,
     rows,
     prepareRow

@@ -17,7 +17,7 @@ const regularUserSchema = new Schema();
 regularUserSchema.add({
   email: { type: String, unique: true },
   password: String,
-  username: String,
+  username: { type: String, unique: true },
   firstName: String,
   lastName: String,
 });
