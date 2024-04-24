@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
+import { useNavigate } from "react-router";
 
 // Components
 import Navbar from "../components/Navbar";
-import DefaultButton from "../components/Button/DefaultButton";
-import DefaultInput from "../components/Forms/DefaultInput";
+import DefaultButton from "../components/buttons/DefaultButton";
+import DefaultInput from "../components/forms/DefaultInput";
 
 // Api
 import { authenticate } from '../api/users';
@@ -20,12 +21,15 @@ import { logUserIn } from '../stores/userStore';
  */
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(""); 
-  const preferedTheme = useSelector((state) => state.user.preferedTheme);
   
+  const preferedTheme = useSelector((state) => state.user.preferedTheme);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
   const wrapperClasses = classNames('h-screen', 'flex', 'flex-col', 'transition', 'transition-all', 'duration-500', 'ease-in-out', {
     'bg-darkBlack': preferedTheme === 'dark',
     'bg-lightWhite': preferedTheme === 'light',
@@ -42,7 +46,6 @@ const Login = () => {
   const authenticateUser = async () => {
     try {
       const response = await authenticate(username, password);
-      console.log(response);
       if (response.error) {
         throw new Error(response.error);
       }
@@ -50,10 +53,17 @@ const Login = () => {
       dispatch(logUserIn({username}));
       localStorage.setItem('access', response.accessToken);
       localStorage.setItem('refresh', response.refreshToken);
+      navigate('/dashboard');
     } catch (error) {
       setFormError(error.message);
     }
   }
+  
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/dashboard');
+    }
+  }, [isLoggedIn, navigate]);
   
   return (
     <div className={wrapperClasses}>

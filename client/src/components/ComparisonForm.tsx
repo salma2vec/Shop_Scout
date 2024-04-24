@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import DefaultInput from "./Forms/DefaultInput";
-import DefaultLabel from "./Forms/DefaultLabel";
-import DefaultSelect from "./Forms/DefaultSelect";
-import DefaultCheckbox from "./Forms/DefaultCheckbox";
+import DefaultInput from "./forms/DefaultInput";
+import DefaultLabel from "./forms/DefaultLabel";
+import DefaultSelect from "./forms/DefaultSelect";
+import DefaultCheckbox from "./forms/DefaultCheckbox";
 
 const ComparisonForm = ({ searchTerm, onSearchTermChange, onCompare }) => {
   const FILTER_OPTIONS = ["none", "highestPrice", "lowestPrice", "highestRating"];

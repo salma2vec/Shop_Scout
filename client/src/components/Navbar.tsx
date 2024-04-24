@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Components
-import LogoImg from "../assets/logo-no-background.png";
 import DarkModeToggle from './DarkModeToggle';
-import DefaultButton from "./Button/DefaultButton";
+import DefaultButton from "./buttons/DefaultButton";
+import LogoAnimation from "./animations/LogoAnimation";
+import UserProfileBadge from "./UserProfileBadge";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,11 +16,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-center px-8 py-2">
       <div className="flex items-center justify-between w-full">
-        <div className="w-20 rounded-full">
-          <button className="cursor-pointer" onClick={() => navigate("/")}>
-            <img src={LogoImg} alt="logo" />
-          </button>
-        </div>
+        <LogoAnimation />
         <div className="flex items-center justify-center gap-4">
           <DefaultButton
             text={ isLoggedin ? "Dashboard" : "Login" }
@@ -32,6 +29,7 @@ const Navbar = () => {
               }
             }}
           />
+          <UserProfileBadge />
           <DarkModeToggle />
         </div>
       </div>

@@ -25,6 +25,22 @@ module.exports = {
         mountainMeadowGreen: "#2BCC8F", // default pink ( inverse )
         eucalyptusGreen: "#33D497" // default pink ( complementary )
       },
+      height: {
+        '512': '512px',
+        '1024': '1024px',
+        '1250': '1250px',
+      },
+      width: {
+        '512': '512px',
+        '1024': '1024px',
+        '1250': '1250px',
+      },
+      maxWidth: {
+        '256': '256px',
+        '512': '512px',
+        '1024': '1024px',
+        '1250': '1250px',
+      },
     },
   },
   plugins: [],

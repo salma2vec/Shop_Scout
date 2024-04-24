@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ResultsTable from "./ResultsTable";
 
 import { capitalize } from "../utils/textHelpers";
-import DefaultButton from "./Button/DefaultButton";
+import DefaultButton from "./buttons/DefaultButton";
 import LoadingIcon from "../assets/icons/LoadingIcon";
 import NotFoundIcon from "../assets/icons/NotFoundIcon";
 import ProductCard from "./ProductCard";

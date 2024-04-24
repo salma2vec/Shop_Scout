@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import DefaultInput from './Forms/DefaultInput';
+import DefaultInput from './forms/DefaultInput';
 
 const LoginTooltip = () => {
   return(

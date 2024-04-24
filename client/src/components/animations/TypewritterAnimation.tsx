@@ -32,7 +32,7 @@ const Typewriter = ({ text, delay }) => {
 
   return (
     <h1
-      className={classNames('max-w-2xl text-4xl font-bold leading-none md:text-5xl drop-shadow', {
+      className={classNames('md:max-w-2xl text-2xl font-bold leading-none md:text-4xl drop-shadow', {
         'text-lighterWhite': preferedTheme === 'dark',
         'text-darkerBlack': preferedTheme === 'light',
       })}
