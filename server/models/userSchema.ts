@@ -1,3 +1,4 @@
+import { User } from "@/interfaces/User";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
@@ -26,6 +27,18 @@ regularUserSchema.add({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
+
+export const addSearchtoHistory = async (userId: string, searchId: string) => {
+  try {
+    const user: any = await RegularUser.findOne({ _id: userId });
+    user.searchHistory.push(searchId);
+    await user.save();
+    return true;
+  } catch (error) {
+    return false;
+  }
+  
+};
 
 const AnonymousUser = mongoose.model("AnonymousUser", anonymousUserSchema);
 const RegularUser = mongoose.model("RegularUser", regularUserSchema);
