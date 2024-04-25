@@ -9,10 +9,11 @@ import DefaultButton from "../components/buttons/DefaultButton";
 import DefaultInput from "../components/forms/DefaultInput";
 
 // Api
-import { authenticate } from '../api/users';
+import { authenticate, identifyUserByToken } from '../api/users';
+import { setIsLoading } from "../stores/coreStore";
 
 // Store
-import { logUserIn } from '../stores/userStore';
+import { logUserIn, setUserInformation } from '../stores/userStore';
 
 /*
  * Login page
@@ -44,6 +45,7 @@ const Login = () => {
   }
   
   const authenticateUser = async () => {
+    dispatch(setIsLoading(true));
     try {
       const response = await authenticate(username, password);
       if (response.error) {
@@ -53,7 +55,18 @@ const Login = () => {
       dispatch(logUserIn({username}));
       localStorage.setItem('access', response.accessToken);
       localStorage.setItem('refresh', response.refreshToken);
-      navigate('/dashboard');
+      
+      identifyUserByToken(response.accessToken)
+        .then((response) => {
+          dispatch(setUserInformation(response));
+          navigate('/dashboard');
+        })
+        .catch((error) => {
+          setFormError(error.message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
     } catch (error) {
       setFormError(error.message);
     }

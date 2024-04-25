@@ -16,7 +16,17 @@ const Dashboard = () => {
   return (
     <div className={wrapperClasses}>
       <Navbar />
-      <h1>Dashboard</h1>
+      <div className={classNames(
+        'flex', 'flex-col', 'p-2', 'mx-10', 'rounded', 'shadow',
+        preferedTheme === 'dark' ? 'bg-lighterDark' : 'bg-darkerWhite',
+      )}>
+        <h1 className={classNames(
+          preferedTheme === 'dark' ? 'text-lightWhite' : 'text-darkBlack',
+        )}>Dashboard</h1>
+        <div>
+          <span>Last searchs</span>
+        </div>
+      </div>
     </div>
   );
 };

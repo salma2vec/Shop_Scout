@@ -148,18 +148,18 @@ authRouter.post("/auth", async (req: Request, res: Response) => {
  *
  * POST /identify
  * Request body:
- * {
- *  "token": ""
- * }
+ *  {
+ *    "token": ""
+ *  }
  * 
  * Response:
- * {
- * "_id": "",
- * "username": "",
- * "email": "",
- * "createdAt": "",
- * "updatedAt": ""
- * }
+ *  {
+ *    "_id": "",
+ *    "username": "",
+ *    "email": "",
+ *    "createdAt": "",
+ *    "updatedAt": ""
+ *  }
  * 
  */
 authRouter.post("/identify", async (req: Request, res: Response) => {

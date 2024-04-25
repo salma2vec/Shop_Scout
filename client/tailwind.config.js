@@ -9,8 +9,11 @@ module.exports = {
         // lightYellow: "#e9c46a",
         // lightOrange: "#f4a261",
         // darkBlack: "#000814",
+        darkerWhite: "#e3e3e3",
         lightWhite: "#ededed",
         lighterWhite: "#f5f5f5",
+
+        lighterDark: "#242424",
         darkBlack: "#1f1f1f",
         darkerBlack: "#121212",
         

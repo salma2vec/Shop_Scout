@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { jwtDecode as jwt } from 'jwt-decode';
 
 // Stores
-import { setPreferedTheme, logUserIn, logUserOut } from './stores/userStore';
+import { setPreferedTheme, setUserInformation, logUserIn, logUserOut } from './stores/userStore';
+import { setIsLoading } from './stores/coreStore';
 
 // Components
 import Landing from './pages/Landing';
@@ -13,6 +14,7 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './pages/404';
 import BannerEnv from './components/BannerEnv';
+import Loading from './components/Loading';
 
 // Utils
 import themeHelper from './utils/themeHelper';
@@ -20,8 +22,12 @@ import { identifyUserByToken } from './api/users';
 
 const Root = () => {
   const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.core.isLoading);
   
   useEffect(() => {
+    dispatch(setIsLoading(true));
+
     let theme = localStorage.getItem('theme');
     let accessToken = localStorage.getItem('access');
     let refreshToken = localStorage.getItem('refresh');
@@ -30,16 +36,16 @@ const Root = () => {
       // TODO: just make sure the global state is updated
       dispatch(logUserOut());
     } else {
-      let decoded = jwt(accessToken);
+      // let decoded = jwt(accessToken);
       
       identifyUserByToken(accessToken)
       .then((response) => {
         dispatch(logUserIn({username: response.username}));
+        dispatch(setUserInformation(response));
       })
       .catch((error) => {
         console.error(error);
       });
-      console.log(decoded)
     }
     if (theme) {
       dispatch(setPreferedTheme(theme));
@@ -47,6 +53,7 @@ const Root = () => {
       dispatch(setPreferedTheme(themeHelper.getUserPreferedSchema()));
     }
     
+    dispatch(setIsLoading(false))
   }, [dispatch]);
 
   return (
@@ -54,12 +61,21 @@ const Root = () => {
       {
           process.env.NODE_ENV !== 'production' && <BannerEnv />
       }
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      {
+        isLoading ? 
+        (
+          <Loading />
+        )
+        : 
+        (
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+        )
+      }
     </>
   );
 };

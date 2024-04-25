@@ -29,7 +29,9 @@ const Navbar = () => {
               }
             }}
           />
-          <UserProfileBadge />
+          {
+            isLoggedin && <UserProfileBadge />
+          }
           <DarkModeToggle />
         </div>
       </div>
