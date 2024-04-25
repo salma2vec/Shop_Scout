@@ -20,6 +20,11 @@ regularUserSchema.add({
   username: { type: String, unique: true },
   firstName: String,
   lastName: String,
+  preferedTheme: { type: String, default: "light" },
+  searchHistory: [String],
+  preferences: [{}],
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 const AnonymousUser = mongoose.model("AnonymousUser", anonymousUserSchema);

@@ -4,9 +4,9 @@ import classNames from "classnames";
 
 // Components
 import DataExtraction from "../assets/illustrations/DataExtraction";
-import DefaultInput from "./Forms/DefaultInput";
-import DefaultButton from "./Button/DefaultButton";
-import Typewriter from "./Typewritter";
+import DefaultInput from "./forms/DefaultInput";
+import DefaultButton from "./buttons/DefaultButton";
+import Typewriter from "./animations/TypewritterAnimation";
 
 // Stores
 import { useSelector } from 'react-redux';
@@ -44,9 +44,9 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
   };
   
   return (
-    <div className="flex flex-wrap-reverse items-center w-full h-screen md:justify-center lg:flex-nowrap">
-      <div className="w-full mx-10 md:mx-20">
-        <div className="flex flex-col items-start justify-center w-full gap-4">
+    <div className="flex flex-wrap-reverse w-full h-screen lg:flex-nowrap">
+      <div className="flex items-end mx-10 mb-48 pt-w-full lg:mx-20">
+        <div className="flex flex-col items-start justify-center w-full gap-4 text-center md:text-left">
           
           <Typewriter text='<span className="whitespace-nowrap">Elevate Your <span className="text-teleMagenta">E-commerce</span></span> Intelligence with ShopScout' delay={100} />
           <p className={classNames('text-lg leading-tight md:text-xl', {
@@ -55,7 +55,7 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
           })}>
             An advanced price comparison tool designed to simplify the process of comparing product prices across various websites.
           </p>
-          <div className="flex flex-col items-start justify-center gap-4 mt-4 md:items-center md:flex-row ">
+          <div className="flex flex-col items-center justify-center w-full gap-4 mt-4 sm:items-start">
             <div className="flex items-center justify-center ">
               <DefaultInput
                 placeholder={"Find the Best Deals"}
@@ -72,8 +72,8 @@ const Hero = ({searchTerm, onSearchTermChange, onCompare}) => {
           </div>
         </div>
       </div>
-      <div className="w-full mx-10 md:mx-20">
-        <DataExtraction />
+      <div className="flex justify-center w-full px-10 md:pr-20">
+        <DataExtraction width="max-w-512" />
       </div>
     </div>
   );

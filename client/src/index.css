@@ -45,10 +45,6 @@ header {
     border-radius: 4px;
   } */
 
-  /* Button styles */
-  button {
-}
-
 h1 {
     font-size: 2rem;
 }
@@ -146,17 +142,7 @@ label {
 
 /* Button styles */
 button {
-    background-color: #4caf50;
-    color: #fff;
-    /* padding: 0.75rem 1rem; */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
 
-  /* Product result styles */
-  .product {
 }
 
 /* Product result styles */

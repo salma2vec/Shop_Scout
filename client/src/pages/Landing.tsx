@@ -7,6 +7,7 @@ import ComparisonForm from '../components/ComparisonForm';
 import ProductResults from '../components/ProductResults';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // Api
 import { fetchProducts } from '../api/products';
@@ -43,15 +44,13 @@ const Landing = () => {
     'bg-lightWhite': preferedTheme === 'light',
   });
 
-  
-  
-
   return (
     <div className={wrapperClasses}>
       <Navbar />
       <Hero searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
       <ComparisonForm searchTerm={searchTerm} onSearchTermChange={setSearchTerm} onCompare={handleSearch} />
       <ProductResults products={results} showResults={hasSearch} isSearching={isSearching} />
+      <Footer />
     </div>
   );
 };
