@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+import authMiddleware from "@/middleware/authMiddleware";
+
 import jwt from "jsonwebtoken";
 
 // Models
@@ -7,16 +9,19 @@ import { addSearchtoHistory } from "@/models/userSchema";
 
 const searchsRouter = express.Router();
 
-searchsRouter.post("/", async (req: Request, res: Response) => {
+searchsRouter.post("/", authMiddleware, async (req: Request, res: Response) => {
   let searchIntentCreated: boolean|null  = null;
-  const { searchTerm, country, filter, topN, comparisonWebsites, token } = req.body;
+  const { searchTerm, country, filter, topN, comparisonWebsites } = req.body;
+  const token = req.header("auth-token");
+
   const search: any = await initSearchIntent();
   
   const userId = jwt.decode(token);
   console.log(userId);
-  // if token is provided, save the search intent to the user's account
+
   if (token) {
-    searchIntentCreated = await addSearchtoHistory(token, search._id);
+  // if token is provided, save the search intent to the user's account
+    searchIntentCreated = await addSearchtoHistory(userId, search._id);
   }
 
 

@@ -21,9 +21,13 @@ regularUserSchema.add({
   username: { type: String, unique: true },
   firstName: String,
   lastName: String,
-  preferedTheme: { type: String, default: "light" },
   searchHistory: [String],
-  preferences: [{}],
+  preferences: {
+    language: { type: String, default: "en" },
+    currency: { type: String, default: "usd" },
+    country: { type: String },
+    preferedTheme: { type: String, default: "light" },
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
@@ -32,12 +36,13 @@ export const addSearchtoHistory = async (userId: string, searchId: string) => {
   try {
     const user: any = await RegularUser.findOne({ _id: userId });
     user.searchHistory.push(searchId);
+    user.updatedAt = Date.now();
     await user.save();
     return true;
   } catch (error) {
     return false;
   }
-  
+  return false;
 };
 
 const AnonymousUser = mongoose.model("AnonymousUser", anonymousUserSchema);

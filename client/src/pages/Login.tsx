@@ -46,30 +46,34 @@ const Login = () => {
   
   const authenticateUser = async () => {
     dispatch(setIsLoading(true));
-    try {
-      const response = await authenticate(username, password);
-      if (response.error) {
-        throw new Error(response.error);
-      }
+    authenticate(username, password)
+      .then((response) => {
+        if (response.error) {
+          throw new Error(response.error);
+        }
+        dispatch(logUserIn({username}));
+        localStorage.setItem('access', response.accessToken);
+        localStorage.setItem('refresh', response.refreshToken);
 
-      dispatch(logUserIn({username}));
-      localStorage.setItem('access', response.accessToken);
-      localStorage.setItem('refresh', response.refreshToken);
-      
-      identifyUserByToken(response.accessToken)
-        .then((response) => {
-          dispatch(setUserInformation(response));
-          navigate('/dashboard');
-        })
-        .catch((error) => {
-          setFormError(error.message);
-        })
-        .finally(() => {
-          dispatch(setIsLoading(false));
-        });
-    } catch (error) {
-      setFormError(error.message);
-    }
+        return response.accessToken
+      })
+      .then((accessToken) => {
+        identifyUserByToken(accessToken)
+          .then((response) => {
+            console.log("response", response);
+            dispatch(setUserInformation(response));
+            navigate('/dashboard');
+          })
+          .catch((error) => {
+            setFormError(error.message);
+          })
+      })
+      .catch((error) => {
+        setFormError(error.message);
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
+      });
   }
   
   useEffect(() => {

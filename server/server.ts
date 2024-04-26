@@ -16,6 +16,9 @@ import { connectToDatabase } from "./utils/databaseConnector";
 // Utils
 import { startupDb } from "./utils/boot";
 
+// Crons
+import { tokenJob } from "./crons/tokenBlacklist";
+
 dotenv.config();
 
 const app = express();
@@ -50,6 +53,9 @@ startupDb();
 app.get("/", (req: Request, res: Response) => {
 	res.send("Hello, World! MongoDB connected successfully!");
 });
+
+// Start crons
+tokenJob.start();
 
 // API Routes
 app.use("/api/v1/users", usersRouter);

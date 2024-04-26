@@ -11,13 +11,13 @@ const tokenSchema = new Schema({
 const refreshTokenSchema = new Schema({
   token: { type: String, required: true },
   userId: { type: Schema.Types.ObjectId, required: true },
-  createdAt: { type: Date, default: Date.now, expires: 2592000 },
+  createdAt: { type: Date, default: Date.now, expires: "1d" },
 });
 
 const tokenBlacklistSchema = new Schema({
   token: { type: String, required: true },
-  userId: { type: Schema.Types.ObjectId, required: true },
-  createdAt: { type: Date, default: Date.now },
+  userId: { type: Schema.Types.ObjectId },
+  createdAt: { type: Date, default: Date.now, expires: "30d" },
 });
 
 const Token = mongoose.model("Token", tokenSchema);

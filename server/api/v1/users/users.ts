@@ -126,9 +126,11 @@ authRouter.post("/auth", async (req: Request, res: Response) => {
   // We can do this by checking the Token and TokenRefresh collections for the user's ID
 
   if (user && result) {
-    const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: "30m" });
     const refreshToken = crypto.randomBytes(64).toString("hex");
-
+    const expires = new Date();
+    expires.setHours(expires.getHours() + 2);
+    
     await Token.create({
       token: accessToken,
       userId: user._id,
