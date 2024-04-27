@@ -32,6 +32,12 @@ export interface User {
     country: string;
     preferedTheme: string;
   };
+  security: {
+    twoFactorAuth: boolean;
+    hasValidEmail: boolean;
+    passwordResetToken: string;
+    passwordResetExpires: Date;
+  },
   createdAt: Date;
   updatedAt: Date;
 }

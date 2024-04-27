@@ -28,6 +28,13 @@ regularUserSchema.add({
     country: { type: String },
     preferedTheme: { type: String, default: "light" },
   },
+  security: {
+    twoFactorAuth: { type: Boolean, default: false },
+    hasValidEmail: { type: Boolean, default: false },
+    emailValidationToken: { type: String, expires: 3600 },
+    passwordResetToken: { type: String },
+    passwordResetExpires: { type: Date },
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

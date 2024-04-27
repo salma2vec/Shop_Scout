@@ -19,7 +19,7 @@ module.exports = {
         teleMagenta: "#d43370", // default pink ( closest websafe #CC3366 )
 
         orangePantone: "#FF5904",  // default blue ( inverse )
-        willpowerOrange: "#00a6fb",  // default blue ( complementary )
+        willPowerOrange: "#FD5800",  // default blue ( complementary )
         mountainMeadowGreen: "#2BCC8F", // default pink ( inverse )
         eucalyptusGreen: "#33D497" // default pink ( complementary )
       },

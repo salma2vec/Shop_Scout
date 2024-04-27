@@ -49,7 +49,7 @@ authRouter.post("/anon/gen", async (req: Request, res: Response) => {
  * Response:
  */
 authRouter.post("/register", async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, firstName, lastName } = req.body;
 
   // hash password
   const salt = await bcrypt.genSalt(10);
@@ -61,7 +61,13 @@ authRouter.post("/register", async (req: Request, res: Response) => {
     "email": email,
     "password": hashedPassword,
     "username": username,
-  }).catch((err) => {
+    "firstName": firstName,
+    "lastName": lastName,
+  })
+  .then((user) => {
+    
+  })
+  .catch((err) => {
     if (err.code === 11000) {
       if (err.keyValue.email) {
         res.status(400).send({
