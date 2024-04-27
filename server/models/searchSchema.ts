@@ -14,7 +14,21 @@ export async function initSearchIntent() {
   });
 
   return search;
-}
+};
+
+export async function getSearchHistory(searchsIds: [string]) {
+  console.log('Search history retrieved');
+  // const searchs = Search.find({ userId });
+  const searchs: Array<typeof Search> = [];
+  let search;
+
+  for (const searchId of searchsIds) {
+    search = await Search.findOne({ _id: searchId }).exec();
+    searchs.push(search);
+  }
+
+  return searchs;
+};
 
 const Search = mongoose.model('Search', searchSchema);
 

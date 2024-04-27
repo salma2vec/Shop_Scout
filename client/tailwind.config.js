@@ -23,6 +23,10 @@ module.exports = {
         mountainMeadowGreen: "#2BCC8F", // default pink ( inverse )
         eucalyptusGreen: "#33D497" // default pink ( complementary )
       },
+      padding: {
+        '0.2': '0.02rem',
+        '0.4': '0.06rem',
+      },
       height: {
         '512': '512px',
         '1024': '1024px',

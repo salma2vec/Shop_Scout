@@ -35,14 +35,13 @@ regularUserSchema.add({
 export const addSearchtoHistory = async (userId: string, searchId: string) => {
   try {
     const user: any = await RegularUser.findOne({ _id: userId });
-    user.searchHistory.push(searchId);
+    user.searchHistory = [ ...user.searchHistory, searchId];
     user.updatedAt = Date.now();
     await user.save();
     return true;
   } catch (error) {
     return false;
   }
-  return false;
 };
 
 const AnonymousUser = mongoose.model("AnonymousUser", anonymousUserSchema);

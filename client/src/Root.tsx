@@ -45,6 +45,9 @@ const Root = () => {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
       });
     }
     if (theme) {
@@ -53,7 +56,7 @@ const Root = () => {
       dispatch(setPreferedTheme(themeHelper.getUserPreferedSchema()));
     }
     
-    dispatch(setIsLoading(false))
+    
   }, [dispatch]);
 
   return (
