@@ -8,13 +8,16 @@ import { setPreferedTheme, setUserInformation, logUserIn, logUserOut } from './s
 import { setIsLoading } from './stores/coreStore';
 
 // Components
-import Landing from './pages/Landing';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
-import NotFound from './pages/404';
 import BannerEnv from './components/BannerEnv';
 import Loading from './components/Loading';
+
+// Pages
+import Landing from './pages/Landing';
+import Dashboard from './pages/Dashboard';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import NotFound from './pages/404';
 
 // Utils
 import themeHelper from './utils/themeHelper';
@@ -35,6 +38,8 @@ const Root = () => {
     if (!accessToken && !refreshToken) {
       // TODO: just make sure the global state is updated
       dispatch(logUserOut());
+      dispatch(setIsLoading(false));
+
     } else {
       // let decoded = jwt(accessToken);
       
@@ -45,6 +50,9 @@ const Root = () => {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
       });
     }
     if (theme) {
@@ -53,7 +61,7 @@ const Root = () => {
       dispatch(setPreferedTheme(themeHelper.getUserPreferedSchema()));
     }
     
-    dispatch(setIsLoading(false))
+    
   }, [dispatch]);
 
   return (
@@ -71,6 +79,7 @@ const Root = () => {
               <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

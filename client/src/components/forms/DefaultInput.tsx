@@ -1,27 +1,32 @@
 import React from "react";
-import PropTypes from "prop-types";
+import classNames from "classnames";
 
-const DefaultInput = ({ type, name, className, placeholder, value, onChange, required }) => {
+type DefaultInputProps = {
+  type: string;
+  name: string;
+  classes: string;
+  placeholder: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  required: boolean;
+  isValid: boolean;
+  requiresValidation: boolean;
+};
+
+const DefaultInput = (props: DefaultInputProps) => {
   return (
     <input
-      type={type || "text"}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange || (() => {})}
-      className={className || "w-full py-3 px-6 m-0 rounded border text-black placeholder:text-gray-400 border-gray-300 focus:outline-none focus:ring-2 focus:ring-teleMagenta focus:border-transparent transition duration-300 ease-in-out"}
-      required={required || false}
+      type={props.type || "text"}
+      name={props.name}
+      placeholder={props.placeholder}
+      value={props.value}
+      onChange={props.onChange || (() => {})}
+      className={classNames(props.classes || "w-full py-3 px-6 m-0 rounded border-2 text-black placeholder:text-gray-400 focus:outline-none  transition duration-300 ease-in-out",
+        props.requiresValidation ? (props.isValid ? "focus:border-green-500" : "border-red-500") : "focus:border-teleMagenta"
+      )}
+      required={props.required || false}
     />
   );
 }
-
-DefaultInput.propTypes = {
-  type: PropTypes.string,
-  name: PropTypes.string,
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-};
 
 export default DefaultInput;

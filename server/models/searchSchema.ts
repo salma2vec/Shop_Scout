@@ -1,26 +1,35 @@
 import mongoose from 'mongoose';
 
-const productSchema = new mongoose.Schema({
-  title: String,
-  price: Number,
-  currency: String,
-  image: String,
-  link: String,
-  reviews: Number,
-  rating: String,
-  search_term: { type: String, index: true }, // Adding an index on the search_term field
-  website: String, // Adding the website field
+const searchSchema = new mongoose.Schema({
+  searchTerm: { type: String, index: true },
+  products: [String],
+  isSearching: { type: Boolean, default: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
-export async function findProducts(search_term: string, filterObject: object, page: number, limit: number) {
-  const products = await Product.find({ search_term, ...filterObject })
-    .skip((page - 1) * limit)
-    .limit(limit)
-    .lean();
+export async function initSearchIntent() {
+  console.log('Search intent initialized');
+  const search = Search.create({
+  });
 
-  return products;
-}
+  return search;
+};
 
-const Product = mongoose.model('Product', productSchema);
+export async function getSearchHistory(searchsIds: [string]) {
+  console.log('Search history retrieved');
+  // const searchs = Search.find({ userId });
+  const searchs: Array<typeof Search> = [];
+  let search;
 
-export { Product };
+  for (const searchId of searchsIds) {
+    search = await Search.findOne({ _id: searchId }).exec();
+    searchs.push(search);
+  }
+
+  return searchs;
+};
+
+const Search = mongoose.model('Search', searchSchema);
+
+export { Search };

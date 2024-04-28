@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const verifyToken = (req: any, res: any, next: any) => {
+const authMiddleware = (req: any, res: any, next: any) => {
   const token = req.header("auth-token");
   if (!token) {
     return res.status(401).send("Access Denied");
@@ -15,4 +15,4 @@ const verifyToken = (req: any, res: any, next: any) => {
   }
 }
 
-export default verifyToken;
+export default authMiddleware;

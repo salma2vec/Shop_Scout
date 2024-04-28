@@ -43,7 +43,7 @@ marketsRouter.get("/all", async (req: Request, res: Response) => {
  */
 marketsRouter.get("/:name", async (req: Request, res: Response) => {
   const { name } = req.params;
-  const market = await Marketplace.find({ name: name }).exec();
+  const market = await Marketplace.findOne({ name: name }).exec();
 
   res.send(market);
 });

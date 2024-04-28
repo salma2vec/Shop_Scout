@@ -49,7 +49,7 @@ authRouter.post("/anon/gen", async (req: Request, res: Response) => {
  * Response:
  */
 authRouter.post("/register", async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, firstName, lastName } = req.body;
 
   // hash password
   const salt = await bcrypt.genSalt(10);
@@ -61,7 +61,13 @@ authRouter.post("/register", async (req: Request, res: Response) => {
     "email": email,
     "password": hashedPassword,
     "username": username,
-  }).catch((err) => {
+    "firstName": firstName,
+    "lastName": lastName,
+  })
+  .then((user) => {
+    
+  })
+  .catch((err) => {
     if (err.code === 11000) {
       if (err.keyValue.email) {
         res.status(400).send({
@@ -126,9 +132,11 @@ authRouter.post("/auth", async (req: Request, res: Response) => {
   // We can do this by checking the Token and TokenRefresh collections for the user's ID
 
   if (user && result) {
-    const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: "30m" });
     const refreshToken = crypto.randomBytes(64).toString("hex");
-
+    const expires = new Date();
+    expires.setHours(expires.getHours() + 2);
+    
     await Token.create({
       token: accessToken,
       userId: user._id,

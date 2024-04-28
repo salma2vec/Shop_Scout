@@ -8,7 +8,7 @@ import {
 } from "@/scrapers/index";
 
 //Models
-import { Product, findProducts } from "@/models/searchSchema";
+import { Product, findProducts } from "@/models/productSchema";
 import { Product as ProductInterface } from "@/interfaces/Product";
 
 const productsRouter = express.Router();

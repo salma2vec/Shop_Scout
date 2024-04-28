@@ -19,8 +19,12 @@ const NotFound = () => {
     <div className={wrapperClasses}>
       <Navbar />
       <div className="flex flex-col items-center justify-center h-full gap-4">
-        <h1 className={classNames([preferedTheme === 'dark' ? 'text-lighterWhite': 'text-darkerBlack', 'text-6xl', 'font-bold', 'shadow'])}>404</h1>
-        <p className={classNames([preferedTheme === 'dark' ? 'text-lighterWhite': 'text-darkerBlack', 'text-xl', 'font-bold', 'shadow'])}>It seems that you're lost, try a different url or <Link to={"/"} className="text-teleMagenta">go home</Link></p>
+        <div className={classNames('flex flex-col items-center px-4 py-8 rounded shadow',
+          preferedTheme === 'dark' ? 'bg-lighterDark' : 'bg-darkerWhite',        
+        )}>
+          <h1 className={classNames([preferedTheme === 'dark' ? 'text-lighterWhite': 'text-darkerBlack', 'text-6xl', 'font-bold'])}>404</h1>
+          <p className={classNames([preferedTheme === 'dark' ? 'text-lighterWhite': 'text-darkerBlack', 'text-xl', 'font-bold'])}>It seems that you're lost, try a different url or <Link to={"/"} className="text-teleMagenta">go home</Link></p>
+        </div>
       </div>
     </div>
   );
